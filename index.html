@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>thedoppler.cc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <div class="title">Ceez.<span class="orange">cc</span></div>
+    <div id="typing-effect" class="typing-effect"></div>
+    <div class="time" id="current-time">== Current Time for Me: 12:00:00 AM ==</div>
+
+    <div class="social-buttons">
+        <a href="https://youtube.com/@thedoppler-l5z?si=qPgcsOir2PoUiaOw" target="_blank">[Youtube]</a>
+        <a href="https://github.com/ceezqt" target="_blank">[Github]</a>
+        <a href="https://cash.app/$BigBallerBrazil" target="_blank">[Cashapp]</a>
+        <a href="https://paypal.me/thedoppler" target="_blank">[Paypal]</a>
+        <a href="https://www.instagram.com/thedopplerr_/" target="_blank">[Instagram]</a>
+    </div>
+
+    <div class="about-me">
+        Hi, my name is Ceez! I do reverse engineering with Lua, Python, and JavaScript...
+    </div>
+
+    <button class="back-button" onclick="goBack()">&lt;-- Back</button>
+    <canvas class="background" id="network-canvas"></canvas>
+    <div class="footer">Made by Ceez</div>
+
+    <div class="audio-control">
+        <audio id="audio-player" loop preload="auto" controls>
+            <source src="https://www.youtube.com/watch?v=ZKEJyDEmlJU" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="start-overlay" onclick="startApp()" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') startApp()">
+        <div class="start-text">PRESS TO BEGIN AGENT...</div>
+    </div>
+
+    <div class="loading-container"></div>
+    <button class="about-me-button" onclick="showAboutMe()">About Me</button>
+
+    <script src="main.js"></script>
+</body>
+</html>
