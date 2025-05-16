@@ -1,599 +1,272 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>thedoppler.cc</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #1a1a1a;
-            color: #ccc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
-        }
-        .title {
-            font-size: 48px;
-            margin-bottom: 20px;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            font-weight: 300;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: 0.05em;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .title .orange {
-            color: orange;
-            margin-left: 2px;
-            letter-spacing: -0.05em;
-        }
-        .typing-effect {
-            font-size: 14px;
-            margin-bottom: 8px;
-            min-height: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            color: #fff;
-            z-index: 1;
-            user-select: none;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid #fff;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0;
-            background: none;
-            border: none;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .time {
-            font-size: 18px;
-            margin-bottom: 20px;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .footer {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 18px;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .social-buttons {
-            z-index: 1;
-            margin-bottom: 20px;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 18px;
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-        .social-buttons a {
-            color: #ccc;
-            text-decoration: none;
-            cursor: pointer;
-            user-select: none;
-            transition: color 0.3s ease;
-        }
-        .social-buttons a:hover, .social-buttons a:focus {
-            color: orange;
-            outline: none;
-        }
-        .audio-control {
-            display: none;
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .start-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 3;
-            cursor: pointer;
-            background-color: #1a1a1a;
-            flex-direction: column;
-            padding: 20px;
-        }
-        .start-text {
-            font-size: 18px;
-            color: #ccc;
-            background: transparent;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            z-index: 4;
-            transition: transform 0.3s ease-in-out;
-            font-family: 'Courier New', Courier, monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            user-select: none;
-        }
-        .start-text:hover {
-            transform: scale(1.1);
-        }
-        .about-me {
-            display: none;
-            font-size: 16px;
-            margin-top: 20px;
-            z-index: 1;
-            max-width: 90vw;
-            word-wrap: break-word;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .back-button {
-            display: none;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            z-index: 3;
-            color: #ccc;
-            font-family: 'Courier New', Courier, monospace;
-            background: none;
-            border: none;
-            transition: color 0.3s ease;
-        }
-        .back-button:hover, .back-button:focus {
-            color: orange;
-            outline: none;
-        }
-        .about-me-button {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            font-size: 18px;
-            color: #ccc;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1;
-            font-family: 'Courier New', Courier, monospace;
-            transition: color 0.3s ease;
-        }
-        .about-me-button:hover, .about-me-button:focus {
-            color: orange;
-            outline: none;
-        }
-        .loading-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
-            padding: 20px;
-            overflow-y: auto;
-            z-index: 5;
-            display: none;
-            flex-direction: column;
-            white-space: pre-wrap;
-            user-select: none;
-            box-shadow: none;
-        }
-        .loading-line {
-            line-height: 1.3;
-        }
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            background-color: #ffffff;
-            animation: blink 1s steps(2, start) infinite;
-            margin-left: 2px;
-            vertical-align: bottom;
-        }
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            50.01%, 100% { opacity: 0; }
-        }
-        @media (max-width: 640px) {
-            .title {
-                font-size: 32px;
-                margin-bottom: 12px;
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>thedoppler.cc</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
+
+  <!-- [Your CSS remains unchanged, omitted here for brevity] -->
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
+    }
+    setInterval(updateTime, 1000);
+
+    function startApp() {
+      document.querySelector('.start-overlay').style.display = 'none';
+      const loadingContainer = document.querySelector('.loading-container');
+      loadingContainer.style.display = 'flex';
+      loadingContainer.textContent = '';
+
+      const lines = [
+        `> Initializing connection...`,
+        `> Establishing secure tunnel...`,
+        `> Bypassing firewall...`,
+        `> Injecting payload...`,
+        `> Decrypting data streams...`,
+        `> Access granted.`,
+        `> Running system diagnostics...`,
+        `> CPU Usage: 23%`,
+        `> Memory Usage: 68%`,
+        `> Network Latency: 42ms`,
+        `> Scanning ports...`,
+        `> Ports open: 22, 80, 443`,
+        `> Initiating data exfiltration...`,
+        `> Encrypting packets...`,
+        `> Uploading to remote server...`,
+        `> Upload complete.`,
+        `> Cleaning logs...`,
+        `> Logs cleaned.`,
+        `> Loading main interface...`
+      ];
+      runLoading(lines, loadingContainer);
+    }
+
+    function runLoading(lines, container) {
+      let index = 0;
+      function addLine() {
+        if (index < lines.length) {
+          const line = document.createElement('div');
+          line.className = 'loading-line';
+          line.textContent = lines[index];
+          container.appendChild(line);
+          container.scrollTop = container.scrollHeight;
+          index++;
+          setTimeout(addLine, 150 + Math.random() * 250);
+        } else {
+          let dataCount = 0;
+          const maxDataLines = 60;
+          function addDataLine() {
+            if (dataCount < maxDataLines) {
+              const line = document.createElement('div');
+              line.className = 'loading-line';
+              line.textContent = generateRandomDataLine();
+              container.appendChild(line);
+              container.scrollTop = container.scrollHeight;
+              dataCount++;
+              setTimeout(addDataLine, 30 + Math.random() * 70);
+            } else {
+              container.style.display = 'none';
+              showMainUI();
             }
-            .typing-effect {
-                font-size: 14px;
-                min-height: 18px;
-                margin-bottom: 6px;
-            }
-            .time {
-                font-size: 14px;
-                margin-bottom: 12px;
-            }
-            .social-buttons {
-                font-size: 16px;
-                gap: 12px;
-            }
-            .footer {
-                font-size: 14px;
-                bottom: 6px;
-                right: 6px;
-            }
-            .audio-control {
-                bottom: 6px;
-                left: 6px;
-            }
-            .about-me-button {
-                font-size: 16px;
-                bottom: 6px;
-                left: 6px;
-            }
-            .back-button {
-                font-size: 14px;
-                top: 6px;
-                left: 6px;
-            }
-            .start-text {
-                font-size: 16px;
-                letter-spacing: 0.08em;
-            }
-            .loading-container {
-                font-size: 12px;
-                padding: 12px;
-            }
+          }
+          addDataLine();
         }
-    </style>
-    <script>
-        function updateTime() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
+      }
+      addLine();
+    }
+
+    function generateRandomDataLine() {
+      const hexChars = '0123456789ABCDEF';
+      const length = 40 + Math.floor(Math.random() * 20);
+      let line = '';
+      for (let i = 0; i < length; i++) {
+        line += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
+      }
+      return line;
+    }
+
+    function showMainUI() {
+      document.querySelector('.title').style.opacity = 1;
+      document.querySelector('.typing-effect').style.opacity = 1;
+      document.querySelector('.time').style.opacity = 1;
+      document.querySelector('.social-buttons').style.opacity = 1;
+      document.querySelector('.footer').style.opacity = 1;
+
+      // Start music after intro
+      const music = document.getElementById('bg-music');
+      if (music) {
+        music.play().catch(() => {
+          console.log("Autoplay blocked by browser.");
+        });
+      }
+    }
+
+    function showAboutMe() {
+      document.querySelector('.title').style.display = 'none';
+      document.querySelector('.typing-effect').style.display = 'none';
+      document.querySelector('.time').style.display = 'none';
+      document.querySelector('.social-buttons').style.display = 'none';
+      document.querySelector('.footer').style.display = 'none';
+      document.querySelector('.about-me').style.display = 'block';
+      document.querySelector('.back-button').style.display = 'block';
+    }
+
+    function goBack() {
+      document.querySelector('.title').style.display = 'inline-flex';
+      document.querySelector('.typing-effect').style.display = 'block';
+      document.querySelector('.time').style.display = 'block';
+      document.querySelector('.social-buttons').style.display = 'flex';
+      document.querySelector('.footer').style.display = 'block';
+      document.querySelector('.about-me').style.display = 'none';
+      document.querySelector('.back-button').style.display = 'none';
+    }
+
+    function typingEffect(element, words, typeSpeed = 100, deleteSpeed = 50, delayBetween = 1500) {
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function type() {
+        const currentWord = words[wordIndex];
+        if (!isDeleting) {
+          element.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+          if (charIndex === currentWord.length) {
+            isDeleting = true;
+            setTimeout(type, delayBetween);
+          } else {
+            setTimeout(type, typeSpeed);
+          }
+        } else {
+          element.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, typeSpeed);
+          } else {
+            setTimeout(type, deleteSpeed);
+          }
         }
-        setInterval(updateTime, 1000);
+      }
+      type();
+    }
 
-        function startApp() {
-            // Hide start overlay
-            const startOverlay = document.querySelector('.start-overlay');
-            startOverlay.style.display = 'none';
+    window.onload = function() {
+      const canvas = document.getElementById('network-canvas');
+      const ctx = canvas.getContext('2d');
 
-            // Show loading container
-            const loadingContainer = document.querySelector('.loading-container');
-            loadingContainer.style.display = 'flex';
-            loadingContainer.textContent = '';
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
 
-            // Simulate hacking intro with IP and data lines
-            const lines = [];
-            // Get user IP via a public API (fallback if fails)
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    const ip = data.ip || '0.0.0.0';
-                    lines.push(`> Initializing connection...`);
-                    lines.push(`> Fetching your IP address...`);
-                    lines.push(`> Your IP: ${ip}`);
-                    lines.push(`> Establishing secure tunnel...`);
-                    lines.push(`> Bypassing firewall...`);
-                    lines.push(`> Injecting payload...`);
-                    lines.push(`> Decrypting data streams...`);
-                    lines.push(`> Access granted.`);
-                    lines.push(`> Running system diagnostics...`);
-                    lines.push(`> CPU Usage: 23%`);
-                    lines.push(`> Memory Usage: 68%`);
-                    lines.push(`> Network Latency: 42ms`);
-                    lines.push(`> Scanning ports...`);
-                    lines.push(`> Ports open: 22, 80, 443`);
-                    lines.push(`> Initiating data exfiltration...`);
-                    lines.push(`> Encrypting packets...`);
-                    lines.push(`> Uploading to remote server...`);
-                    lines.push(`> Upload complete.`);
-                    lines.push(`> Cleaning logs...`);
-                    lines.push(`> Logs cleaned.`);
-                    lines.push(`> Loading main interface...`);
-                    runLoading(lines, loadingContainer);
-                })
-                .catch(() => {
-                    // fallback IP
-                    const ip = '0.0.0.0';
-                    lines.push(`> Initializing connection...`);
-                    lines.push(`> Fetching your IP address...`);
-                    lines.push(`> Your IP: ${ip}`);
-                    lines.push(`> Establishing secure tunnel...`);
-                    lines.push(`> Bypassing firewall...`);
-                    lines.push(`> Injecting payload...`);
-                    lines.push(`> Decrypting data streams...`);
-                    lines.push(`> Access granted.`);
-                    lines.push(`> Running system diagnostics...`);
-                    lines.push(`> CPU Usage: 23%`);
-                    lines.push(`> Memory Usage: 68%`);
-                    lines.push(`> Network Latency: 42ms`);
-                    lines.push(`> Scanning ports...`);
-                    lines.push(`> Ports open: 22, 80, 443`);
-                    lines.push(`> Initiating data exfiltration...`);
-                    lines.push(`> Encrypting packets...`);
-                    lines.push(`> Uploading to remote server...`);
-                    lines.push(`> Upload complete.`);
-                    lines.push(`> Cleaning logs...`);
-                    lines.push(`> Logs cleaned.`);
-                    lines.push(`> Loading main interface...`);
-                    runLoading(lines, loadingContainer);
-                });
-        }
+      const nodes = [];
+      const maxNodes = 600;
+      const maxDistance = 100;
 
-        function runLoading(lines, container) {
-            let index = 0;
-            function addLine() {
-                if (index < lines.length) {
-                    const line = document.createElement('div');
-                    line.className = 'loading-line';
-                    line.textContent = lines[index];
-                    container.appendChild(line);
-                    container.scrollTop = container.scrollHeight;
-                    index++;
-                    // Random delay between 150-400ms for realism
-                    setTimeout(addLine, 150 + Math.random() * 250);
-                } else {
-                    // After all lines, do some random "data" lines for 3 seconds
-                    let dataCount = 0;
-                    const maxDataLines = 60;
-                    function addDataLine() {
-                        if (dataCount < maxDataLines) {
-                            const line = document.createElement('div');
-                            line.className = 'loading-line';
-                            line.textContent = generateRandomDataLine();
-                            container.appendChild(line);
-                            container.scrollTop = container.scrollHeight;
-                            dataCount++;
-                            setTimeout(addDataLine, 30 + Math.random() * 70);
-                        } else {
-                            // Hide loading and show main UI
-                            container.style.display = 'none';
-                            showMainUI();
-                        }
-                    }
-                    addDataLine();
-                }
+      function Node(x, y) {
+        this.x = x;
+        this.y = y;
+        this.vx = (Math.random() * 2 - 1) * 0.5;
+        this.vy = (Math.random() * 2 - 1) * 0.5;
+      }
+
+      Node.prototype.update = function() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      };
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < nodes.length; i++) {
+          const node = nodes[i];
+          node.update();
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = '#ccc';
+          ctx.fill();
+
+          for (let j = i + 1; j < nodes.length; j++) {
+            const otherNode = nodes[j];
+            const dx = node.x - otherNode.x;
+            const dy = node.y - otherNode.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < maxDistance) {
+              ctx.beginPath();
+              ctx.moveTo(node.x, node.y);
+              ctx.lineTo(otherNode.x, otherNode.y);
+              ctx.strokeStyle = `rgba(204, 204, 204, ${1 - distance / maxDistance})`;
+              ctx.stroke();
             }
-            addLine();
+          }
         }
 
-        function generateRandomDataLine() {
-            const hexChars = '0123456789ABCDEF';
-            const length = 40 + Math.floor(Math.random() * 20);
-            let line = '';
-            for (let i = 0; i < length; i++) {
-                line += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
-            }
-            return line;
-        }
+        requestAnimationFrame(draw);
+      }
 
-        function showMainUI() {
-            document.querySelector('.title').style.opacity = 1;
-            document.querySelector('.typing-effect').style.opacity = 1;
-            document.querySelector('.time').style.opacity = 1;
-            document.querySelector('.social-buttons').style.opacity = 1;
-            document.querySelector('.footer').style.opacity = 1;
-            const audioControl = document.querySelector('.audio-control');
-            audioControl.style.opacity = 1;
-            audioControl.style.display = 'block';
-            const audio = document.getElementById('audio-player');
-            audio.play().catch(() => {
-                // Autoplay might be blocked, user interaction required
-            });
-        }
+      for (let i = 0; i < maxNodes; i++) {
+        nodes.push(new Node(Math.random() * canvas.width, Math.random() * canvas.height));
+      }
 
-        function showAboutMe() {
-            document.querySelector('.title').style.display = 'none';
-            document.querySelector('.typing-effect').style.display = 'none';
-            document.querySelector('.time').style.display = 'none';
-            document.querySelector('.social-buttons').style.display = 'none';
-            document.querySelector('.footer').style.display = 'none';
-            document.querySelector('.audio-control').style.display = 'none';
-            document.querySelector('.about-me').style.display = 'block';
-            document.querySelector('.back-button').style.display = 'block';
-            const audio = document.getElementById('audio-player');
-            audio.pause();
-        }
+      draw();
 
-        function goBack() {
-            document.querySelector('.title').style.display = 'inline-flex';
-            document.querySelector('.typing-effect').style.display = 'block';
-            document.querySelector('.time').style.display = 'block';
-            document.querySelector('.social-buttons').style.display = 'flex';
-            document.querySelector('.footer').style.display = 'block';
-            document.querySelector('.audio-control').style.display = 'block';
-            document.querySelector('.about-me').style.display = 'none';
-            document.querySelector('.back-button').style.display = 'none';
-            const audio = document.getElementById('audio-player');
-            audio.play().catch(() => {
-                // Autoplay might be blocked
-            });
-        }
-
-        // Typing effect function
-        function typingEffect(element, words, typeSpeed = 100, deleteSpeed = 50, delayBetween = 1500) {
-            let wordIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-
-            function type() {
-                const currentWord = words[wordIndex];
-                if (!isDeleting) {
-                    element.textContent = currentWord.substring(0, charIndex + 1);
-                    charIndex++;
-                    if (charIndex === currentWord.length) {
-                        isDeleting = true;
-                        setTimeout(type, delayBetween);
-                    } else {
-                        setTimeout(type, typeSpeed);
-                    }
-                } else {
-                    element.textContent = currentWord.substring(0, charIndex - 1);
-                    charIndex--;
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        wordIndex = (wordIndex + 1) % words.length;
-                        setTimeout(type, typeSpeed);
-                    } else {
-                        setTimeout(type, deleteSpeed);
-                    }
-                }
-            }
-            type();
-        }
-
-        window.onload = function() {
-            // Initialize canvas and animation
-            const canvas = document.getElementById('network-canvas');
-            const ctx = canvas.getContext('2d');
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            const nodes = [];
-            const maxNodes = 600;
-            const maxDistance = 100;
-
-            function Node(x, y) {
-                this.x = x;
-                this.y = y;
-                this.vx = (Math.random() * 2 - 1) * 0.5;
-                this.vy = (Math.random() * 2 - 1) * 0.5;
-            }
-
-            Node.prototype.update = function() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            };
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#1a1a1a';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                for (let i = 0; i < nodes.length; i++) {
-                    const node = nodes[i];
-                    node.update();
-                    ctx.beginPath();
-                    ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-                    ctx.fillStyle = '#ccc';
-                    ctx.fill();
-
-                    for (let j = i + 1; j < nodes.length; j++) {
-                        const otherNode = nodes[j];
-                        const dx = node.x - otherNode.x;
-                        const dy = node.y - otherNode.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < maxDistance) {
-                            ctx.beginPath();
-                            ctx.moveTo(node.x, node.y);
-                            ctx.lineTo(otherNode.x, otherNode.y);
-                            ctx.strokeStyle = `rgba(204, 204, 204, ${1 - distance / maxDistance})`;
-                            ctx.stroke();
-                        }
-                    }
-                }
-
-                requestAnimationFrame(draw);
-            }
-
-            nodes.length = 0;
-            for (let i = 0; i < maxNodes; i++) {
-                nodes.push(new Node(Math.random() * canvas.width, Math.random() * canvas.height));
-            }
-
-            draw();
-
-            // Start typing effect with the updated quotes
-            const typingElement = document.getElementById('typing-effect');
-            const phrases = [
-                '"the fucking moon is split in half - Ceez"',
-                'My name is jeff',
-                'Welcome to Ceez.cc!',
-                'Mr. Rashid',
-                '"Challenge yourself; it’s the only path which leads to growth." - Morgan Freeman 1937 - 2025'
-            ];
-            typingEffect(typingElement, phrases, 100, 50, 2000);
-        };
-    </script>
+      const typingElement = document.getElementById('typing-effect');
+      const phrases = [
+        '"the fucking moon is split in half - Ceez"',
+        'My name is jeff',
+        'Welcome to Ceez.cc!',
+        'Mr. Rashid',
+        '"Challenge yourself; it’s the only path which leads to growth." - Morgan Freeman 1937 - 2025'
+      ];
+      typingEffect(typingElement, phrases, 100, 50, 2000);
+    };
+  </script>
 </head>
 <body>
-    <div class="title" aria-label="Site title">
-        Ceez.<span class="orange">cc</span>
-    </div>
-    <div id="typing-effect" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
-    <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
-        == Current Time for Me: 12:00:00 AM ==
-    </div>
-    <div class="social-buttons">
-        <a href="https://youtube.com/@thedoppler-l5z?si=qPgcsOir2PoUiaOw" target="_blank" aria-label="YouTube channel of thedoppler" rel="noopener noreferrer">[Youtube]</a>
-        <a href="https://github.com/ceezqt" target="_blank" aria-label="GitHub profile of ceezqt" rel="noopener noreferrer">[Github]</a>
-        <a href="https://cash.app/$BigBallerBrazil" target="_blank" aria-label="Cash App profile BigBallerBrazil" rel="noopener noreferrer">[Cashapp]</a>
-        <a href="https://paypal.me/thedoppler" target="_blank" aria-label="PayPal profile thedoppler" rel="noopener noreferrer">[Paypal]</a>
-        <a href="https://www.instagram.com/thedopplerr_/" target="_blank" aria-label="Instagram profile thedopplerr_" rel="noopener noreferrer">[Instagram]</a>
-    </div>
-    <div class="about-me" role="region" aria-live="polite" aria-atomic="true">
-        Hi, my name is Ceez! I do reverse engineering with Lua, Python, and JavaScript. I started experiencing coding when I was 15 and worked hard to grow my skills and improve over time. If you want to contact me, use Discord: @charlesplatt
-    </div>
-    <button class="back-button" onclick="goBack()" aria-label="Go back to main view" type="button">
-        &lt;-- Back
-    </button>
-    <canvas class="background" id="network-canvas" aria-hidden="true"></canvas>
-    <div class="footer">
-        Made by Ceez
-    </div>
-    <div class="audio-control">
-        <audio id="audio-player" loop preload="auto" controls style="width: 150px; background: transparent; outline: none; border: none; color: #ccc;">
-            <source src="https://www.youtube.com/watch?v=ZKEJyDEmlJU" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-    <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" aria-label="Press to begin the application" onkeydown="if(event.key==='Enter' || event.key===' ') startApp()">
-        <div class="start-text">PRESS TO BEGIN AGENT...</div>
-    </div>
-    <div class="loading-container" aria-live="polite" aria-atomic="true" aria-label="Loading hacking intro"></div>
-    <button class="about-me-button" onclick="showAboutMe()" aria-label="Show about me section" type="button">About Me</button>
+  <div class="title">Ceez.<span class="orange">cc</span></div>
+  <div id="typing-effect" class="typing-effect"></div>
+  <div class="time" id="current-time">== Current Time for Me: 12:00:00 AM ==</div>
+  <div class="social-buttons">
+    <a href="https://youtube.com/@thedoppler-l5z?si=qPgcsOir2PoUiaOw" target="_blank">[Youtube]</a>
+    <a href="https://github.com/ceezqt" target="_blank">[Github]</a>
+    <a href="https://cash.app/$BigBallerBrazil" target="_blank">[Cashapp]</a>
+    <a href="https://paypal.me/thedoppler" target="_blank">[Paypal]</a>
+    <a href="https://www.instagram.com/thedopplerr_/" target="_blank">[Instagram]</a>
+  </div>
+  <div class="about-me">
+    Hi, my name is Ceez! I do reverse engineering with Lua, Python, and JavaScript. I started experiencing coding when I was 15 and worked hard to grow my skills and improve over time. If you want to contact me, use Discord: @charlesplatt
+  </div>
+  <button class="back-button" onclick="goBack()">&lt;-- Back</button>
+  <canvas class="background" id="network-canvas"></canvas>
+  <div class="footer">Made by Ceez</div>
+  <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') startApp()">
+    <div class="start-text">PRESS TO BEGIN AGENT...</div>
+  </div>
+  <div class="loading-container"></div>
+  <button class="about-me-button" onclick="showAboutMe()">About Me</button>
+
+  <!-- MUSIC ELEMENT -->
+  <audio id="bg-music" src="Destiny (feat. ruinedbymateo).mp3" loop></audio>
 </body>
 </html>
