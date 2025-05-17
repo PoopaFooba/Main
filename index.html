@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -8,8 +7,271 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
     <style>
-        /* Your existing styles remain unchanged */
-        /* ... (full CSS is preserved here, not removed) ... */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        .title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .title .orange {
+            color: orange;
+            margin-left: 2px;
+            letter-spacing: -0.05em;
+        }
+        .typing-effect {
+            font-size: 14px;
+            margin-bottom: 8px;
+            min-height: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #fff;
+            z-index: 1;
+            user-select: none;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+            background: none;
+            border: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .time {
+            font-size: 18px;
+            margin-bottom: 20px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 18px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .social-buttons {
+            z-index: 1;
+            margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .social-buttons a {
+            color: #ccc;
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+        .social-buttons a:hover, .social-buttons a:focus {
+            color: orange;
+            outline: none;
+        }
+        .audio-control {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .start-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            cursor: pointer;
+            background-color: #1a1a1a;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .start-text {
+            font-size: 18px;
+            color: #ccc;
+            background: transparent;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 4;
+            transition: transform 0.3s ease-in-out;
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            user-select: none;
+        }
+        .start-text:hover {
+            transform: scale(1.1);
+        }
+        .about-me {
+            display: none;
+            font-size: 16px;
+            margin-top: 20px;
+            z-index: 1;
+            max-width: 90vw;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .back-button {
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 3;
+            color: #ccc;
+            font-family: 'Courier New', Courier, monospace;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+        .back-button:hover, .back-button:focus {
+            color: orange;
+            outline: none;
+        }
+        .about-me-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 18px;
+            color: #ccc;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+            font-family: 'Courier New', Courier, monospace;
+            transition: color 0.3s ease;
+        }
+        .about-me-button:hover, .about-me-button:focus {
+            color: orange;
+            outline: none;
+        }
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 5;
+            display: none;
+            flex-direction: column;
+            white-space: pre-wrap;
+            user-select: none;
+            box-shadow: none;
+        }
+        .loading-line {
+            line-height: 1.3;
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: #ffffff;
+            animation: blink 1s steps(2, start) infinite;
+            margin-left: 2px;
+            vertical-align: bottom;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            50.01%, 100% { opacity: 0; }
+        }
+        @media (max-width: 640px) {
+            .title {
+                font-size: 32px;
+                margin-bottom: 12px;
+            }
+            .typing-effect {
+                font-size: 14px;
+                min-height: 18px;
+                margin-bottom: 6px;
+            }
+            .time {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
+            .social-buttons {
+                font-size: 16px;
+                gap: 12px;
+            }
+            .footer {
+                font-size: 14px;
+                bottom: 6px;
+                right: 6px;
+            }
+            .audio-control {
+                bottom: 6px;
+                left: 6px;
+            }
+            .about-me-button {
+                font-size: 16px;
+                bottom: 6px;
+                left: 6px;
+            }
+            .back-button {
+                font-size: 14px;
+                top: 6px;
+                left: 6px;
+            }
+            .start-text {
+                font-size: 16px;
+                letter-spacing: 0.08em;
+            }
+            .loading-container {
+                font-size: 12px;
+                padding: 12px;
+            }
+        }
     </style>
     <script>
         function updateTime() {
@@ -19,37 +281,42 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
             document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
         }
         setInterval(updateTime, 1000);
 
         function startApp() {
-            document.querySelector('.start-overlay').style.display = 'none';
+            // Hide start overlay
+            const startOverlay = document.querySelector('.start-overlay');
+            startOverlay.style.display = 'none';
+
+            // Show loading container
             const loadingContainer = document.querySelector('.loading-container');
             loadingContainer.style.display = 'flex';
             loadingContainer.textContent = '';
-            const lines = [
-                `> Initializing connection...`,
-                `> Establishing secure tunnel...`,
-                `> Bypassing firewall...`,
-                `> Injecting payload...`,
-                `> Decrypting data streams...`,
-                `> Access granted.`,
-                `> Running system diagnostics...`,
-                `> CPU Usage: 23%`,
-                `> Memory Usage: 68%`,
-                `> Network Latency: 42ms`,
-                `> Scanning ports...`,
-                `> Ports open: 22, 80, 443`,
-                `> Initiating data exfiltration...`,
-                `> Encrypting packets...`,
-                `> Uploading to remote server...`,
-                `> Upload complete.`,
-                `> Cleaning logs...`,
-                `> Logs cleaned.`,
-                `> Loading main interface...`
-            ];
+
+            // Simulate hacking intro without IP lines
+            const lines = [];
+            lines.push(`> Initializing connection...`);
+            lines.push(`> Establishing secure tunnel...`);
+            lines.push(`> Bypassing firewall...`);
+            lines.push(`> Injecting payload...`);
+            lines.push(`> Decrypting data streams...`);
+            lines.push(`> Access granted.`);
+            lines.push(`> Running system diagnostics...`);
+            lines.push(`> CPU Usage: 23%`);
+            lines.push(`> Memory Usage: 68%`);
+            lines.push(`> Network Latency: 42ms`);
+            lines.push(`> Scanning ports...`);
+            lines.push(`> Ports open: 22, 80, 443`);
+            lines.push(`> Initiating data exfiltration...`);
+            lines.push(`> Encrypting packets...`);
+            lines.push(`> Uploading to remote server...`);
+            lines.push(`> Upload complete.`);
+            lines.push(`> Cleaning logs...`);
+            lines.push(`> Logs cleaned.`);
+            lines.push(`> Loading main interface...`);
             runLoading(lines, loadingContainer);
         }
 
@@ -63,8 +330,10 @@
                     container.appendChild(line);
                     container.scrollTop = container.scrollHeight;
                     index++;
+                    // Random delay between 150-400ms for realism
                     setTimeout(addLine, 150 + Math.random() * 250);
                 } else {
+                    // After all lines, do some random "data" lines for 3 seconds
                     let dataCount = 0;
                     const maxDataLines = 60;
                     function addDataLine() {
@@ -77,6 +346,7 @@
                             dataCount++;
                             setTimeout(addDataLine, 30 + Math.random() * 70);
                         } else {
+                            // Hide loading and show main UI
                             container.style.display = 'none';
                             showMainUI();
                         }
@@ -103,7 +373,6 @@
             document.querySelector('.time').style.opacity = 1;
             document.querySelector('.social-buttons').style.opacity = 1;
             document.querySelector('.footer').style.opacity = 1;
-            document.getElementById('bg-music').play(); // Play music after intro
         }
 
         function showAboutMe() {
@@ -126,6 +395,7 @@
             document.querySelector('.back-button').style.display = 'none';
         }
 
+        // Typing effect function
         function typingEffect(element, words, typeSpeed = 100, deleteSpeed = 50, delayBetween = 1500) {
             let wordIndex = 0;
             let charIndex = 0;
@@ -158,6 +428,7 @@
         }
 
         window.onload = function() {
+            // Initialize canvas and animation
             const canvas = document.getElementById('network-canvas');
             const ctx = canvas.getContext('2d');
 
@@ -182,6 +453,7 @@
             Node.prototype.update = function() {
                 this.x += this.vx;
                 this.y += this.vy;
+
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             };
@@ -218,12 +490,14 @@
                 requestAnimationFrame(draw);
             }
 
+            nodes.length = 0;
             for (let i = 0; i < maxNodes; i++) {
                 nodes.push(new Node(Math.random() * canvas.width, Math.random() * canvas.height));
             }
 
             draw();
 
+            // Start typing effect with the updated quotes
             const typingElement = document.getElementById('typing-effect');
             const phrases = [
                 '"the fucking moon is split in half - Ceez"',
@@ -237,29 +511,34 @@
     </script>
 </head>
 <body>
-    <div class="title">Ceez.<span class="orange">cc</span></div>
-    <div id="typing-effect" class="typing-effect"></div>
-    <div class="time" id="current-time">== Current Time for Me: 12:00:00 AM ==</div>
-    <div class="social-buttons">
-        <a href="https://youtube.com/@thedoppler-l5z?si=qPgcsOir2PoUiaOw" target="_blank">[Youtube]</a>
-        <a href="https://github.com/ceezqt" target="_blank">[Github]</a>
-        <a href="https://cash.app/$BigBallerBrazil" target="_blank">[Cashapp]</a>
-        <a href="https://paypal.me/thedoppler" target="_blank">[Paypal]</a>
-        <a href="https://www.instagram.com/thedopplerr_/" target="_blank">[Instagram]</a>
+    <div class="title" aria-label="Site title">
+        Ceez.<span class="orange">cc</span>
     </div>
-    <div class="about-me">
+    <div id="typing-effect" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
+    <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
+        == Current Time for Me: 12:00:00 AM ==
+    </div>
+    <div class="social-buttons">
+        <a href="https://youtube.com/@thedoppler-l5z?si=qPgcsOir2PoUiaOw" target="_blank" aria-label="YouTube channel of thedoppler" rel="noopener noreferrer">[Youtube]</a>
+        <a href="https://github.com/ceezqt" target="_blank" aria-label="GitHub profile of ceezqt" rel="noopener noreferrer">[Github]</a>
+        <a href="https://cash.app/$BigBallerBrazil" target="_blank" aria-label="Cash App profile BigBallerBrazil" rel="noopener noreferrer">[Cashapp]</a>
+        <a href="https://paypal.me/thedoppler" target="_blank" aria-label="PayPal profile thedoppler" rel="noopener noreferrer">[Paypal]</a>
+        <a href="https://www.instagram.com/thedopplerr_/" target="_blank" aria-label="Instagram profile thedopplerr_" rel="noopener noreferrer">[Instagram]</a>
+    </div>
+    <div class="about-me" role="region" aria-live="polite" aria-atomic="true">
         Hi, my name is Ceez! I do reverse engineering with Lua, Python, and JavaScript. I started experiencing coding when I was 15 and worked hard to grow my skills and improve over time. If you want to contact me, use Discord: @charlesplatt
     </div>
-    <button class="back-button" onclick="goBack()">&lt;-- Back</button>
-    <canvas class="background" id="network-canvas"></canvas>
-    <div class="footer">Made by Ceez</div>
-    <div class="start-overlay" onclick="startApp()">
+    <button class="back-button" onclick="goBack()" aria-label="Go back to main view" type="button">
+        &lt;-- Back
+    </button>
+    <canvas class="background" id="network-canvas" aria-hidden="true"></canvas>
+    <div class="footer">
+        Made by Ceez
+    </div>
+    <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" aria-label="Press to begin the application" onkeydown="if(event.key==='Enter' || event.key===' ') startApp()">
         <div class="start-text">PRESS TO BEGIN AGENT...</div>
     </div>
-    <div class="loading-container"></div>
-    <button class="about-me-button" onclick="showAboutMe()">About Me</button>
-
-    <!-- Music -->
-    <audio id="bg-music" src="Destiny (feat. ruinedbymateo).mp3" autoplay loop hidden></audio>
+    <div class="loading-container" aria-live="polite" aria-atomic="true" aria-label="Loading hacking intro"></div>
+    <button class="about-me-button" onclick="showAboutMe()" aria-label="Show about me section" type="button">About Me</button>
 </body>
 </html>
