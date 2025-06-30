@@ -66,6 +66,7 @@
             opacity: 0;
             transition: opacity 1s ease-in-out;
             font-family: 'Courier New', Courier, monospace;
+            color: #fff;
         }
         .background {
             position: fixed;
@@ -84,6 +85,7 @@
             z-index: 1;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            color: #fff;
         }
         .social-buttons {
             z-index: 1;
@@ -97,7 +99,7 @@
             justify-content: center;
         }
         .social-buttons a {
-            color: #ccc;
+            color: #fff;
             text-decoration: none;
             cursor: pointer;
             user-select: none;
@@ -108,13 +110,22 @@
             outline: none;
         }
         .audio-control {
-            display: none;
+            display: block;
             position: absolute;
-            bottom: 10px;
+            bottom: 30px;
             left: 10px;
             z-index: 1;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .audio-control:hover, .audio-control:focus {
+            color: orange;
+            outline: none;
         }
         .start-overlay {
             position: fixed;
@@ -156,6 +167,7 @@
             max-width: 90vw;
             word-wrap: break-word;
             font-family: 'Courier New', Courier, monospace;
+            color: #fff;
         }
         .back-button {
             display: none;
@@ -164,7 +176,7 @@
             left: 10px;
             font-size: 16px;
             cursor: pointer;
-            z-index: 3;
+            z-index: 615;
             color: #ccc;
             font-family: 'Courier New', Courier, monospace;
             background: none;
@@ -180,7 +192,7 @@
             bottom: 10px;
             left: 10px;
             font-size: 18px;
-            color: #ccc;
+            color: #fff;
             background: none;
             border: none;
             cursor: pointer;
@@ -250,7 +262,7 @@
                 right: 6px;
             }
             .audio-control {
-                bottom: 6px;
+                bottom: 20px;
                 left: 6px;
             }
             .about-me-button {
@@ -281,22 +293,22 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
+            hours = hours ? hours : 12; 
             document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
         }
         setInterval(updateTime, 1000);
 
         function startApp() {
-            // Hide start overlay
+            // 
             const startOverlay = document.querySelector('.start-overlay');
             startOverlay.style.display = 'none';
 
-            // Show loading container
+            // 
             const loadingContainer = document.querySelector('.loading-container');
             loadingContainer.style.display = 'flex';
             loadingContainer.textContent = '';
 
-            // Simulate hacking intro without IP lines
+            // 
             const lines = [];
             lines.push(`> Initializing connection...`);
             lines.push(`> Establishing secure tunnel...`);
@@ -330,10 +342,10 @@
                     container.appendChild(line);
                     container.scrollTop = container.scrollHeight;
                     index++;
-                    // Random delay between 150-400ms for realism
+                    // 
                     setTimeout(addLine, 150 + Math.random() * 250);
                 } else {
-                    // After all lines, do some random "data" lines for 3 seconds
+                    // 
                     let dataCount = 0;
                     const maxDataLines = 60;
                     function addDataLine() {
@@ -373,6 +385,13 @@
             document.querySelector('.time').style.opacity = 1;
             document.querySelector('.social-buttons').style.opacity = 1;
             document.querySelector('.footer').style.opacity = 1;
+            document.querySelector('.audio-control').style.opacity = 1;
+            document.querySelector('.about-me-button').style.opacity = 1;
+            // 1
+            const audio = document.getElementById('background-audio');
+            audio.play().catch(error => {
+                console.error('Audio playback failed:', error);
+            });
         }
 
         function showAboutMe() {
@@ -383,6 +402,8 @@
             document.querySelector('.footer').style.display = 'none';
             document.querySelector('.about-me').style.display = 'block';
             document.querySelector('.back-button').style.display = 'block';
+            document.querySelector('.audio-control').style.display = 'none';
+            document.querySelector('.about-me-button').style.display = 'none';
         }
 
         function goBack() {
@@ -393,6 +414,22 @@
             document.querySelector('.footer').style.display = 'block';
             document.querySelector('.about-me').style.display = 'none';
             document.querySelector('.back-button').style.display = 'none';
+            document.querySelector('.audio-control').style.display = 'block';
+            document.querySelector('.about-me-button').style.display = 'block';
+        }
+
+        function toggleAudio() {
+            const audio = document.getElementById('background-audio');
+            const audioButton = document.querySelector('.audio-control');
+            if (audio.paused) {
+                audio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                });
+                audioButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+            } else {
+                audio.pause();
+                audioButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            }
         }
 
         // Typing effect function
@@ -428,7 +465,7 @@
         }
 
         window.onload = function() {
-            // Initialize canvas and animation
+            // stuff
             const canvas = document.getElementById('network-canvas');
             const ctx = canvas.getContext('2d');
 
@@ -497,7 +534,7 @@
 
             draw();
 
-            // Start typing effect with the updated quotes
+            
             const typingElement = document.getElementById('typing-effect');
             const phrases = [
                 '"the fucking moon is split in half - Sturm"',
@@ -519,7 +556,7 @@
         == Current Time for Me: 12:00:00 AM ==
     </div>
     <div class="social-buttons">
-        <a href="https://www.youtube.com/@CeezDIA" target="_blank" aria-label="YouTube channel of thedoppler" rel="noopener noreferrer">[Youtube]</a>
+        <a href="https://www.youtube.com/@SturmIDE" target="_blank" aria-label="YouTube channel of thedoppler" rel="noopener noreferrer">[Youtube]</a>
         <a href="https://github.com/ceezqt" target="_blank" aria-label="GitHub profile of ceezqt" rel="noopener noreferrer">[Github]</a>
         <a href="https://cash.app/$BigBallerBrazil" target="_blank" aria-label="Cash App profile BigBallerBrazil" rel="noopener noreferrer">[Cashapp]</a>
         <a href="https://paypal.me/thedoppler" target="_blank" aria-label="PayPal profile thedoppler" rel="noopener noreferrer">[Paypal]</a>
@@ -529,7 +566,7 @@
         Hi, my name is Sturm! I do reverse engineering with Lua, Python, and JavaScript. I started experiencing coding when I was 15 and worked hard to grow my skills and improve over time. If you want to contact me, use Discord: @charlesplatt
     </div>
     <button class="back-button" onclick="goBack()" aria-label="Go back to main view" type="button">
-        &lt;-- Back
+        <-- Back
     </button>
     <canvas class="background" id="network-canvas" aria-hidden="true"></canvas>
     <div class="footer">
@@ -540,5 +577,12 @@
     </div>
     <div class="loading-container" aria-live="polite" aria-atomic="true" aria-label="Loading hacking intro"></div>
     <button class="about-me-button" onclick="showAboutMe()" aria-label="Show about me section" type="button">About Me</button>
+    <button class="audio-control" onclick="toggleAudio()" aria-label="Toggle audio playback" type="button">
+        <i class="fas fa-volume-up"></i>
+    </button>
+    <audio id="background-audio" aria-label="Background music">
+        <source src="https://files.catbox.moe/ab90lb.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 </html>
