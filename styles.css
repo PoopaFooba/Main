@@ -103,7 +103,7 @@ body {
 .audio-control {
     display: block;
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 10px;
     z-index: 1;
     opacity: 0;
@@ -253,7 +253,7 @@ body {
         right: 6px;
     }
     .audio-control {
-        bottom: 20px;
+        bottom: 30px;
         left: 6px;
     }
     .about-me-button {
