@@ -5,19 +5,22 @@ function updateTime() {
     const seconds = String(now.getSeconds()).padStart(2, '0');
     const ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
-    hours = hours ? hours : 12;
+    hours = hours ? hours : 12; 
     document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
 }
 setInterval(updateTime, 1000);
 
 function startApp() {
+    // 
     const startOverlay = document.querySelector('.start-overlay');
     startOverlay.style.display = 'none';
 
+    // 
     const loadingContainer = document.querySelector('.loading-container');
     loadingContainer.style.display = 'flex';
     loadingContainer.textContent = '';
 
+    // 
     const lines = [
         `> Initializing connection...`,
         `> Establishing secure tunnel...`,
@@ -52,8 +55,10 @@ function runLoading(lines, container) {
             container.appendChild(line);
             container.scrollTop = container.scrollHeight;
             index++;
+            //
             setTimeout(addLine, 150 + Math.random() * 250);
         } else {
+            // 
             let dataCount = 0;
             const maxDataLines = 60;
             function addDataLine() {
@@ -66,6 +71,7 @@ function runLoading(lines, container) {
                     dataCount++;
                     setTimeout(addDataLine, 30 + Math.random() * 70);
                 } else {
+                    // Hide loading and show main UI
                     container.style.display = 'none';
                     showMainUI();
                 }
@@ -94,6 +100,7 @@ function showMainUI() {
     document.querySelector('.footer').style.opacity = 1;
     document.querySelector('.audio-control').style.opacity = 1;
     document.querySelector('.about-me-button').style.opacity = 1;
+    //
     const audio = document.getElementById('background-audio');
     audio.play().catch(error => {
         console.error('Audio playback failed:', error);
@@ -138,6 +145,7 @@ function toggleAudio() {
     }
 }
 
+// 
 function typingEffect(element, words, typeSpeed = 100, deleteSpeed = 50, delayBetween = 1500) {
     let wordIndex = 0;
     let charIndex = 0;
@@ -170,6 +178,7 @@ function typingEffect(element, words, typeSpeed = 100, deleteSpeed = 50, delayBe
 }
 
 window.onload = function() {
+    //
     const canvas = document.getElementById('network-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -238,6 +247,7 @@ window.onload = function() {
 
     draw();
 
+    // 
     const typingElement = document.getElementById('typing-effect');
     const phrases = [
         '"the fucking moon is split in half - Sturm"',
