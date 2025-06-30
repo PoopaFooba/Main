@@ -1,0 +1,250 @@
+function updateTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
+}
+setInterval(updateTime, 1000);
+
+function startApp() {
+    const startOverlay = document.querySelector('.start-overlay');
+    startOverlay.style.display = 'none';
+
+    const loadingContainer = document.querySelector('.loading-container');
+    loadingContainer.style.display = 'flex';
+    loadingContainer.textContent = '';
+
+    const lines = [
+        `> Initializing connection...`,
+        `> Establishing secure tunnel...`,
+        `> Bypassing firewall...`,
+        `> Injecting payload...`,
+        `> Decrypting data streams...`,
+        `> Access granted.`,
+        `> Running system diagnostics...`,
+        `> CPU Usage: 23%`,
+        `> Memory Usage: 68%`,
+        `> Network Latency: 42ms`,
+        `> Scanning ports...`,
+        `> Ports open: 22, 80, 443`,
+        `> Initiating data exfiltration...`,
+        `> Encrypting packets...`,
+        `> Uploading to remote server...`,
+        `> Upload complete.`,
+        `> Cleaning logs...`,
+        `> Logs cleaned.`,
+        `> Loading main interface...`
+    ];
+    runLoading(lines, loadingContainer);
+}
+
+function runLoading(lines, container) {
+    let index = 0;
+    function addLine() {
+        if (index < lines.length) {
+            const line = document.createElement('div');
+            line.className = 'loading-line';
+            line.textContent = lines[index];
+            container.appendChild(line);
+            container.scrollTop = container.scrollHeight;
+            index++;
+            setTimeout(addLine, 150 + Math.random() * 250);
+        } else {
+            let dataCount = 0;
+            const maxDataLines = 60;
+            function addDataLine() {
+                if (dataCount < maxDataLines) {
+                    const line = document.createElement('div');
+                    line.className = 'loading-line';
+                    line.textContent = generateRandomDataLine();
+                    container.appendChild(line);
+                    container.scrollTop = container.scrollHeight;
+                    dataCount++;
+                    setTimeout(addDataLine, 30 + Math.random() * 70);
+                } else {
+                    container.style.display = 'none';
+                    showMainUI();
+                }
+            }
+            addDataLine();
+        }
+    }
+    addLine();
+}
+
+function generateRandomDataLine() {
+    const hexChars = '0123456789ABCDEF';
+    const length = 40 + Math.floor(Math.random() * 20);
+    let line = '';
+    for (let i = 0; i < length; i++) {
+        line += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
+    }
+    return line;
+}
+
+function showMainUI() {
+    document.querySelector('.title').style.opacity = 1;
+    document.querySelector('.typing-effect').style.opacity = 1;
+    document.querySelector('.time').style.opacity = 1;
+    document.querySelector('.social-buttons').style.opacity = 1;
+    document.querySelector('.footer').style.opacity = 1;
+    document.querySelector('.audio-control').style.opacity = 1;
+    document.querySelector('.about-me-button').style.opacity = 1;
+    const audio = document.getElementById('background-audio');
+    audio.play().catch(error => {
+        console.error('Audio playback failed:', error);
+    });
+}
+
+function showAboutMe() {
+    document.querySelector('.title').style.display = 'none';
+    document.querySelector('.typing-effect').style.display = 'none';
+    document.querySelector('.time').style.display = 'none';
+    document.querySelector('.social-buttons').style.display = 'none';
+    document.querySelector('.footer').style.display = 'none';
+    document.querySelector('.about-me').style.display = 'block';
+    document.querySelector('.back-button').style.display = 'block';
+    document.querySelector('.audio-control').style.display = 'none';
+    document.querySelector('.about-me-button').style.display = 'none';
+}
+
+function goBack() {
+    document.querySelector('.title').style.display = 'inline-flex';
+    document.querySelector('.typing-effect').style.display = 'block';
+    document.querySelector('.time').style.display = 'block';
+    document.querySelector('.social-buttons').style.display = 'flex';
+    document.querySelector('.footer').style.display = 'block';
+    document.querySelector('.about-me').style.display = 'none';
+    document.querySelector('.back-button').style.display = 'none';
+    document.querySelector('.audio-control').style.display = 'block';
+    document.querySelector('.about-me-button').style.display = 'block';
+}
+
+function toggleAudio() {
+    const audio = document.getElementById('background-audio');
+    const audioButton = document.querySelector('.audio-control');
+    if (audio.paused) {
+        audio.play().catch(error => {
+            console.error('Audio playback failed:', error);
+        });
+        audioButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+    } else {
+        audio.pause();
+        audioButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    }
+}
+
+function typingEffect(element, words, typeSpeed = 100, deleteSpeed = 50, delayBetween = 1500) {
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
+        if (!isDeleting) {
+            element.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(type, delayBetween);
+            } else {
+                setTimeout(type, typeSpeed);
+            }
+        } else {
+            element.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, typeSpeed);
+            } else {
+                setTimeout(type, deleteSpeed);
+            }
+        }
+    }
+    type();
+}
+
+window.onload = function() {
+    const canvas = document.getElementById('network-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const nodes = [];
+    const maxNodes = 600;
+    const maxDistance = 100;
+
+    function Node(x, y) {
+        this.x = x;
+        this.y = y;
+        this.vx = (Math.random() * 2 - 1) * 0.5;
+        this.vy = (Math.random() * 2 - 1) * 0.5;
+    }
+
+    Node.prototype.update = function() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    };
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < nodes.length; i++) {
+            const node = nodes[i];
+            node.update();
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = '#ccc';
+            ctx.fill();
+
+            for (let j = i + 1; j < nodes.length; j++) {
+                const otherNode = nodes[j];
+                const dx = node.x - otherNode.x;
+                const dy = node.y - otherNode.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < maxDistance) {
+                    ctx.beginPath();
+                    ctx.moveTo(node.x, node.y);
+                    ctx.lineTo(otherNode.x, otherNode.y);
+                    ctx.strokeStyle = `rgba(204, 204, 204, ${1 - distance / maxDistance})`;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(draw);
+    }
+
+    nodes.length = 0;
+    for (let i = 0; i < maxNodes; i++) {
+        nodes.push(new Node(Math.random() * canvas.width, Math.random() * canvas.height));
+    }
+
+    draw();
+
+    const typingElement = document.getElementById('typing-effect');
+    const phrases = [
+        '"the fucking moon is split in half - Sturm"',
+        'My name is jeff',
+        'Welcome to Ceez.cc!',
+        'Mr. Rashid',
+        '"Challenge yourself; it’s the only path which leads to growth." - Morgan Freeman 1937 - 2025'
+    ];
+    typingEffect(typingElement, phrases, 100, 50, 2000);
+};
