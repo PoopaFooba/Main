@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ceez.cc</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ceez.cc</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="title" aria-label="Site title">
-        <span class="orange">ceez</span><span class="white">.cc</span>
-    </div>
-    <div id="typElement" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
-    <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
-        == Current Time for Me: 08:34 PM ==
-    </div>
-    <div class="social-buttons">
-        <a href="https://www.youtube.com/@CeezDIA" target="_blank" rel="noopener noreferrer">[Youtube]</a>
-        <a href="https://github.com/ceezqt" target="_blank" rel="noopener noreferrer">[Github]</a>
-        <a href="https://cash.app/$BigBallerBrazil" target="_blank" rel="noopener noreferrer">[Cashapp]</a>
-        <a href="https://paypal.me/thedoppler" target="_blank" rel="noopener noreferrer">[Paypal]</a>
-        <a href="https://www.instagram.com/lockceez?igsh=enMxMnJlN2RpZTlh&utm_source=qr" target="_blank" rel="noopener noreferrer">[Instagram]</a>
-    </div>
-    <button class="back-button" onclick="goBack()" type="button">
-        <-- Back
-    </button>
-    <div class="footer">Made by Sturm</div>
-    <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') startApp()">
-        <div class="start-text">PRESS TO BEGIN AGENT...</div>
-    </div>
-    <div class="loading-container"></div>
+  <div id="particles-js"></div>
+  <div class="title" aria-label="Site title">
+    <span class="orange">ceez</span><span class="white">.cc</span>
+  </div>
+  <div id="typElement" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
+  <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
+    == Current Time for Me: 08:34 PM ==
+  </div>
+  <div class="social-buttons">
+    <a href="https://www.youtube.com/@CeezDIA" target="_blank" rel="noopener noreferrer">[Youtube]</a>
+    <a href="https://github.com/ceezqt" target="_blank" rel="noopener noreferrer">[Github]</a>
+    <a href="https://cash.app/$BigBallerBrazil" target="_blank" rel="noopener noreferrer">[Cashapp]</a>
+    <a href="https://paypal.me/thedoppler" target="_blank" rel="noopener noreferrer">[Paypal]</a>
+    <a href="https://www.instagram.com/lockceez?igsh=enMxMnJlN2RpZTlh&utm_source=qr" target="_blank" rel="noopener noreferrer">[Instagram]</a>
+  </div>
+  <button class="back-button" onclick="goBack()" type="button">
+    <-- Back
+  </button>
+  <div class="footer">Made by Sturm</div>
+  <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') startApp()">
+    <div class="start-text">PRESS TO BEGIN AGENT...</div>
+  </div>
+  <div class="loading-container"></div>
 
-    <audio id="background-audio" loop preload="auto">
-        <source src="https://files.catbox.moe/ab90lb.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+  <audio id="background-audio" loop preload="auto">
+    <source src="https://files.catbox.moe/ab90lb.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
-    <script src="script.js"></script>
+  <!-- a -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
+  <script src="script.js"></script>
+
+  <!-- stuff -->
+  <script>
+    // 
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // 
+    document.onkeydown = function (e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+        (e.ctrlKey && e.key === "U") ||
+        (e.ctrlKey && e.shiftKey && e.key === "C")
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    // 
+    document.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('selectstart', e => e.preventDefault());
+  </script>
 </body>
 </html>
