@@ -1,51 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>ceez.cc</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
-    <link href="styles.css" rel="stylesheet"/>
-    <script src="script.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ceez.cc</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="title" aria-label="Site title">
-        Ceez.<span class="orange">cc</span>
-    </div>
-    <div id="typing-effect" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
-    <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
-        == Current Time for Me: 12:00:00 AM ==
-    </div>
-    <div class="social-buttons">
-        <a href="https://www.youtube.com/@CeezDIA" target="_blank" aria-label="YouTube channel of thedoppler" rel="noopener noreferrer">[Youtube]</a>
-        <a href="https://github.com/ceezqt" target="_blank" aria-label="GitHub profile of ceezqt" rel="noopener noreferrer">[Github]</a>
-        <a href="https://cash.app/$BigBallerBrazil" target="_blank" aria-label="Cash App profile BigBallerBrazil" rel="noopener noreferrer">[Cashapp]</a>
-        <a href="https://paypal.me/thedoppler" target="_blank" aria-label="PayPal profile thedoppler" rel="noopener noreferrer">[Paypal]</a>
-        <a href="https://www.instagram.com/lockceez?igsh=enMxMnJlN2RpZTlh&utm_source=qr" target="_blank" aria-label="Instagram profile thedopplerr_" rel="noopener noreferrer">[Instagram]</a>
-    </div>
-    <div class="about-me" role="region" aria-live="polite" aria-atomic="true">
-        Hi, my name is Sturm! I do reverse engineering with Lua, Python, and JavaScript. I started experiencing coding when I was 15 and worked hard to grow my skills and improve over time. If you want to contact me, use Discord: @charlesplatt
-    </div>
-    <button class="back-button" onclick="goBack()" aria-label="Go back to main view" type="button">
-        <-- Back
-    </button>
-    <canvas class="background" id="network-canvas" aria-hidden="true"></canvas>
-    <div class="footer">
-        Made by Sturm
-    </div>
-    <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" aria-label="Press to begin the application" onkeydown="if(event.key==='Enter' || event.key===' ') startApp()">
-        <div class="start-text">PRESS TO BEGIN AGENT...</div>
-    </div>
-    <div class="loading-container" aria-live="polite" aria-atomic="true" aria-label="Loading hacking intro"></div>
-    <button class="about-me-button" onclick="showAboutMe()" aria-label="Show about me section" type="button">About Me</button>
-    <button class="audio-control" onclick="toggleAudio()" aria-label="Toggle audio playback" type="button">
-        <i class="fas fa-volume-up"></i>
-    </button>
-    <audio id="background-audio" loop aria-label="Background music">
-        <source src="https://files.catbox.moe/ab90lb.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+  <div id="particles-js"></div>
+  <div class="title" aria-label="Site title">
+    <span class="orange">ceez</span><span class="white">.cc</span>
+  </div>
+  <div id="typElement" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
+  <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
+    == Current Time for Me: 05:50 PM ==
+  </div>
+  <div class="social-buttons">
+    <a href="https://www.youtube.com/@CeezDIA" target="_blank" rel="noopener noreferrer">[Youtube]</a>
+    <a href="https://github.com/ceezqt" target="_blank" rel="noopener noreferrer">[Github]</a>
+    <a href="https://cash.app/$BigBallerBrazil" target="_blank" rel="noopener noreferrer">[Cashapp]</a>
+    <a href="https://paypal.me/thedoppler" target="_blank" rel="noopener noreferrer">[Paypal]</a>
+    <a href="https://www.instagram.com/lockceez?igsh=enMxMnJlN2RpZTlh&utm_source=qr" target="_blank" rel="noopener noreferrer">[Instagram]</a>
+  </div>
+  <button class="back-button" onclick="goBack()"> &lt;-- Back </button>
+  <div class="footer">Made by Sturm</div>
+  <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') startApp()">
+    <div class="start-text">PRESS TO BEGIN AGENT...</div>
+  </div>
+  <div class="loading-container"></div>
+  <audio id="background-audio" loop preload="auto">
+    <source src="https://files.catbox.moe/ab90lb.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
