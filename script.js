@@ -1,260 +1,217 @@
-function updateTime() {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
-}
-setInterval(updateTime, 1000);
-
-function startApp() {
-    // Hide start overlay
-    const startOverlay = document.querySelector('.start-overlay');
-    startOverlay.style.display = 'none';
-
-    // Show loading container
-    const loadingContainer = document.querySelector('.loading-container');
-    loadingContainer.style.display = 'flex';
-    loadingContainer.textContent = '';
-
-    // Simulate hacking intro without IP lines
-    const lines = [
-        `> Initializing connection...`,
-        `> Establishing secure tunnel...`,
-        `> Bypassing firewall...`,
-        `> Injecting payload...`,
-        `> Decrypting data streams...`,
-        `> Access granted.`,
-        `> Running system diagnostics...`,
-        `> CPU Usage: 23%`,
-        `> Memory Usage: 68%`,
-        `> Network Latency: 42ms`,
-        `> Scanning ports...`,
-        `> Ports open: 22, 80, 443`,
-        `> Initiating data exfiltration...`,
-        `> Encrypting packets...`,
-        `> Uploading to remote server...`,
-        `> Upload complete.`,
-        `> Cleaning logs...`,
-        `> Logs cleaned.`,
-        `> Loading main interface...`
-    ];
-    runLoading(lines, loadingContainer);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(30, 30, 30);
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
 }
 
-function runLoading(lines, container) {
-    let index = 0;
-    function addLine() {
-        if (index < lines.length) {
-            const line = document.createElement('div');
-            line.className = 'loading-line';
-            line.textContent = lines[index];
-            container.appendChild(line);
-            container.scrollTop = container.scrollHeight;
-            index++;
-            // Random delay between 150-400ms for realism
-            setTimeout(addLine, 150 + Math.random() * 250);
-        } else {
-            // After all lines, do some random "data" lines for 3 seconds
-            let dataCount = 0;
-            const maxDataLines = 60;
-            function addDataLine() {
-                if (dataCount < maxDataLines) {
-                    const line = document.createElement('div');
-                    line.className = 'loading-line';
-                    line.textContent = generateRandomDataLine();
-                    container.appendChild(line);
-                    container.scrollTop = container.scrollHeight;
-                    dataCount++;
-                    setTimeout(addDataLine, 30 + Math.random() * 70);
-                } else {
-                    // Hide loading and show main UI
-                    container.style.display = 'none';
-                    showMainUI();
-                }
-            }
-            addDataLine();
-        }
-    }
-    addLine();
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: auto;
+  background-color: rgb(30, 30, 30);
 }
 
-function generateRandomDataLine() {
-    const hexChars = '0123456789ABCDEF';
-    const length = 40 + Math.floor(Math.random() * 20);
-    let line = '';
-    for (let i = 0; i < length; i++) {
-        line += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
-    }
-    return line;
+.title {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.title .orange {
+  color: #FFA500;
+  margin-left: 2px;
+}
+.title .white {
+  color: #fff;
 }
 
-function showMainUI() {
-    document.querySelector('.title').style.opacity = 1;
-    document.querySelector('.typing-effect').style.opacity = 1;
-    document.querySelector('.time').style.opacity = 1;
-    document.querySelector('.social-buttons').style.opacity = 1;
-    document.querySelector('.footer').style.opacity = 1;
-    document.querySelector('.audio-control').style.opacity = 1;
-    document.querySelector('.about-me-button').style.opacity = 1;
-    // Play audio after loading is complete
-    const audio = document.getElementById('background-audio');
-    audio.play().catch(error => {
-        console.error('Audio playback failed:', error);
-    });
+.typing-effect {
+  font-size: 12px;
+  margin-bottom: 8px;
+  min-height: 16px;
+  color: #666;
+  z-index: 1;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  background: none;
+  border: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: relative;
+}
+.typing-effect::after {
+  content: "|";
+  animation: blink 0.7s step-end infinite;
+  position: absolute;
+  right: -10px;
+  color: #666;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
-function showAboutMe() {
-    document.querySelector('.title').style.display = 'none';
-    document.querySelector('.typing-effect').style.display = 'none';
-    document.querySelector('.time').style.display = 'none';
-    document.querySelector('.social-buttons').style.display = 'none';
-    document.querySelector('.footer').style.display = 'none';
-    document.querySelector('.about-me').style.display = 'block';
-    document.querySelector('.back-button').style.display = 'block';
-    document.querySelector('.audio-control').style.display = 'none';
-    document.querySelector('.about-me-button').style.display = 'none';
+.time {
+  font-size: 12px;
+  margin-bottom: 8px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  color: #666;
+  user-select: none;
+}
+.footer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  color: #666;
+  user-select: none;
+}
+.social-buttons {
+  z-index: 1;
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  font-size: 12px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  user-select: none;
+}
+.social-buttons a {
+  color: #666;
+  text-decoration: underline;
+}
+.social-buttons a:hover {
+  color: #fff;
 }
 
-function goBack() {
-    document.querySelector('.title').style.display = 'inline-flex';
-    document.querySelector('.typing-effect').style.display = 'block';
-    document.querySelector('.time').style.display = 'block';
-    document.querySelector('.social-buttons').style.display = 'flex';
-    document.querySelector('.footer').style.display = 'block';
-    document.querySelector('.about-me').style.display = 'none';
-    document.querySelector('.back-button').style.display = 'none';
-    document.querySelector('.audio-control').style.display = 'block';
-    document.querySelector('.about-me-button').style.display = 'block';
+.start-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background-color: rgb(30, 30, 30);
+  flex-direction: column;
+  padding: 20px;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+}
+.start-text {
+  font-size: 14px;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 4;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: transform 0.3s ease-in-out;
+}
+.start-text:hover {
+  transform: scale(1.1);
 }
 
-function toggleAudio() {
-    const audio = document.getElementById('background-audio');
-    const audioButton = document.querySelector('.audio-control');
-    if (audio.paused) {
-        audio.play().catch(error => {
-            console.error('Audio playback failed:', error);
-        });
-        audioButton.innerHTML = '<i class="fas fa-volume-up"></i>';
-    } else {
-        audio.pause();
-        audioButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
-    }
+.back-button {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.back-button:hover {
+  color: #ff9900;
 }
 
-// Typing effect function
-function typingEffect(element, words, typeSpeed = 100, deleteSpeed = 50, delayBetween = 1500) {
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function type() {
-        const currentWord = words[wordIndex];
-        if (!isDeleting) {
-            element.textContent = currentWord.substring(0, charIndex + 1);
-            charIndex++;
-            if (charIndex === currentWord.length) {
-                isDeleting = true;
-                setTimeout(type, delayBetween);
-            } else {
-                setTimeout(type, typeSpeed);
-            }
-        } else {
-            element.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-            if (charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                setTimeout(type, typeSpeed);
-            } else {
-                setTimeout(type, deleteSpeed);
-            }
-        }
-    }
-    type();
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(30, 30, 30);
+  color: #fff;
+  font-size: 12px;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 5;
+  display: none;
+  flex-direction: column;
+  white-space: pre-wrap;
+  user-select: none;
+}
+.loading-line {
+  line-height: 1.3;
 }
 
-window.onload = function() {
-    // Initialize canvas and animation
-    const canvas = document.getElementById('network-canvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const nodes = [];
-    const maxNodes = 600;
-    const maxDistance = 100;
-
-    function Node(x, y) {
-        this.x = x;
-        this.y = y;
-        this.vx = (Math.random() * 2 - 1) * 0.5;
-        this.vy = (Math.random() * 2 - 1) * 0.5;
-    }
-
-    Node.prototype.update = function() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-    };
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#1a1a1a';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < nodes.length; i++) {
-            const node = nodes[i];
-            node.update();
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-            ctx.fillStyle = '#ccc';
-            ctx.fill();
-
-            for (let j = i + 1; j < nodes.length; j++) {
-                const otherNode = nodes[j];
-                const dx = node.x - otherNode.x;
-                const dy = node.y - otherNode.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < maxDistance) {
-                    ctx.beginPath();
-                    ctx.moveTo(node.x, node.y);
-                    ctx.lineTo(otherNode.x, otherNode.y);
-                    ctx.strokeStyle = `rgba(204, 204, 204, ${1 - distance / maxDistance})`;
-                    ctx.stroke();
-                }
-            }
-        }
-
-        requestAnimationFrame(draw);
-    }
-
-    nodes.length = 0;
-    for (let i = 0; i < maxNodes; i++) {
-        nodes.push(new Node(Math.random() * canvas.width, Math.random() * canvas.height));
-    }
-
-    draw();
-
-    // Start typing effect with the updated quotes
-    const typingElement = document.getElementById('typing-effect');
-    const phrases = [
-        '"the fucking moon is split in half - Sturm"',
-        'My name is jeff',
-        'Welcome to Ceez.cc!',
-        'Mr. Rashid',
-        '"Challenge yourself; it’s the only path which leads to growth." - Morgan Freeman 1937 - 2025'
-    ];
-    typingEffect(typingElement, phrases, 100, 50, 2000);
-};
+@media (max-width: 640px) {
+  .title {
+    font-size: 22px;
+  }
+  .typing-effect,
+  .time {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+  .footer {
+    font-size: 10px;
+    bottom: 6px;
+    right: 6px;
+  }
+  .social-buttons {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .back-button {
+    font-size: 12px;
+    top: 6px;
+    left: 6px;
+  }
+  .start-text {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .loading-container {
+    font-size: 10px;
+    padding: 12px;
+  }
+}
