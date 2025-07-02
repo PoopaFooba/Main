@@ -1,1 +1,168 @@
-const _0x148399=_0x5874;function _0x55d9(){const _0x441e0f=['push','2622538kklWZO','div','10qJbzMv','>\x20CPU\x20Usage:\x2023%','flex','start','charAt','scrollHeight','typeString','out','.title','70nEtEes','opacity','.footer','347431HoWoru','843516GivynM','168zoDinp','>\x20Injecting\x20payload...','inline-flex','appendChild','block','deleteAll','display','.time','>\x20Network\x20Latency:\x2042ms','\x20==','3KAjxXn','length','.social-buttons','>\x20Decrypting\x20data\x20streams...','.typing-effect','getElementById','canvas','play','catch','>\x20Running\x20system\x20diagnostics...','My\x20name\x20is\x20jeff','callFunction','\x22Challenge\x20yourself;\x20it’s\x20the\x20only\x20path\x20which\x20leads\x20to\x20growth.\x22\x20-\x20Morgan\x20Freeman\x201937\x20-\x202025','floor','>\x20Initializing\x20connection...','background-audio','pauseFor','Welcome\x20to\x20ceez.cc!','particles-js','4275192xSClrv','onload','.loading-container','4411bDVexm','.start-overlay','>\x20Bypassing\x20firewall...','>\x20Cleaning\x20logs...','Audio\x20playback\x20failed:','71136ShYFWa','circle','querySelector','loading-line','>\x20Uploading\x20to\x20remote\x20server...','>\x20Initiating\x20data\x20exfiltration...','>\x20Establishing\x20secure\x20tunnel...','random','textContent','>\x20Upload\x20complete.','className','padStart','>\x20Memory\x20Usage:\x2068%','==\x20Current\x20Time\x20for\x20Me:\x20','style','createElement','\x22the\x20fucking\x20moon\x20is\x20split\x20in\x20half\x22\x20-\x20Sturm','typElement','>\x20Encrypting\x20packets...','3746028SKVhuc','109767vdwILQ','>\x20Loading\x20main\x20interface...','#ffffff'];_0x55d9=function(){return _0x441e0f;};return _0x55d9();}(function(_0x105269,_0x29e82a){const _0x35ba97=_0x5874,_0x17af81=_0x105269();while(!![]){try{const _0x1188dd=-parseInt(_0x35ba97(0xe1))/0x1+-parseInt(_0x35ba97(0xe5))/0x2*(-parseInt(_0x35ba97(0xb2))/0x3)+parseInt(_0x35ba97(0xe0))/0x4+-parseInt(_0x35ba97(0xe7))/0x5*(-parseInt(_0x35ba97(0xc5))/0x6)+-parseInt(_0x35ba97(0xa6))/0x7*(parseInt(_0x35ba97(0xa8))/0x8)+parseInt(_0x35ba97(0xa7))/0x9*(parseInt(_0x35ba97(0xf0))/0xa)+parseInt(_0x35ba97(0xc8))/0xb*(-parseInt(_0x35ba97(0xcd))/0xc);if(_0x1188dd===_0x29e82a)break;else _0x17af81['push'](_0x17af81['shift']());}catch(_0x1802a8){_0x17af81['push'](_0x17af81['shift']());}}}(_0x55d9,0xc33e8));function updateTime(){const _0x461453=_0x5874,_0x2b5b0a=new Date();let _0x5c38e3=_0x2b5b0a['getHours']();const _0x35b38a=String(_0x2b5b0a['getMinutes']())[_0x461453(0xd8)](0x2,'0'),_0x5f24c4=String(_0x2b5b0a['getSeconds']())[_0x461453(0xd8)](0x2,'0'),_0x3e74d1=_0x5c38e3>=0xc?'PM':'AM';_0x5c38e3=_0x5c38e3%0xc||0xc,document['getElementById']('current-time')[_0x461453(0xd5)]=_0x461453(0xda)+_0x5c38e3+':'+_0x35b38a+':'+_0x5f24c4+'\x20'+_0x3e74d1+_0x461453(0xb1);}setInterval(updateTime,0x3e8),updateTime();function startApp(){const _0x2678a2=_0x5874;document[_0x2678a2(0xcf)](_0x2678a2(0xc9))['style'][_0x2678a2(0xae)]='none';const _0x1a1ad1=document[_0x2678a2(0xcf)](_0x2678a2(0xc7));_0x1a1ad1[_0x2678a2(0xdb)][_0x2678a2(0xae)]='flex',_0x1a1ad1['textContent']='';const _0x49a7d4=[_0x2678a2(0xc0),_0x2678a2(0xd3),_0x2678a2(0xca),_0x2678a2(0xa9),_0x2678a2(0xb5),'>\x20Access\x20granted.',_0x2678a2(0xbb),_0x2678a2(0xe8),_0x2678a2(0xd9),_0x2678a2(0xb0),'>\x20Scanning\x20ports...','>\x20Ports\x20open:\x2022,\x2080,\x20443',_0x2678a2(0xd2),_0x2678a2(0xdf),_0x2678a2(0xd1),_0x2678a2(0xd6),_0x2678a2(0xcb),'>\x20Logs\x20cleaned.',_0x2678a2(0xe2)];runLoading(_0x49a7d4,_0x1a1ad1);}function runLoading(_0x1904bf,_0x305b97){let _0x1a5139=0x0;function _0x3edd05(){const _0x41175c=_0x5874;if(_0x1a5139<_0x1904bf[_0x41175c(0xb3)]){const _0x462aa9=document[_0x41175c(0xdc)]('div');_0x462aa9[_0x41175c(0xd7)]=_0x41175c(0xd0),_0x462aa9[_0x41175c(0xd5)]=_0x1904bf[_0x1a5139],_0x305b97[_0x41175c(0xab)](_0x462aa9),_0x305b97['scrollTop']=_0x305b97[_0x41175c(0xec)],_0x1a5139++,setTimeout(_0x3edd05,0x96+Math['random']()*0xfa);}else{let _0x1ab7ce=0x0;const _0x10930a=0x3c;function _0x1f77a2(){const _0x4f3eb5=_0x41175c;if(_0x1ab7ce<_0x10930a){const _0x107172=document[_0x4f3eb5(0xdc)](_0x4f3eb5(0xe6));_0x107172[_0x4f3eb5(0xd7)]=_0x4f3eb5(0xd0),_0x107172['textContent']=generateRandomDataLine(),_0x305b97[_0x4f3eb5(0xab)](_0x107172),_0x305b97['scrollTop']=_0x305b97[_0x4f3eb5(0xec)],_0x1ab7ce++,setTimeout(_0x1f77a2,0x1e+Math['random']()*0x46);}else _0x305b97[_0x4f3eb5(0xdb)][_0x4f3eb5(0xae)]='none',showMainUI();}_0x1f77a2();}}_0x3edd05();}function generateRandomDataLine(){const _0x478890=_0x5874,_0x595a41='0123456789ABCDEF',_0x10aed5=0x28+Math['floor'](Math[_0x478890(0xd4)]()*0x14);let _0x1168f7='';for(let _0x775b96=0x0;_0x775b96<_0x10aed5;_0x775b96++){_0x1168f7+=_0x595a41[_0x478890(0xeb)](Math[_0x478890(0xbf)](Math['random']()*_0x595a41[_0x478890(0xb3)]));}return _0x1168f7;}function showMainUI(){const _0x279dd3=_0x5874;document['querySelector'](_0x279dd3(0xef))[_0x279dd3(0xdb)][_0x279dd3(0xf1)]=0x1,document[_0x279dd3(0xcf)](_0x279dd3(0xb6))[_0x279dd3(0xdb)][_0x279dd3(0xf1)]=0x1,document[_0x279dd3(0xcf)](_0x279dd3(0xaf))[_0x279dd3(0xdb)][_0x279dd3(0xf1)]=0x1,document[_0x279dd3(0xcf)](_0x279dd3(0xb4))[_0x279dd3(0xdb)][_0x279dd3(0xf1)]=0x1,document[_0x279dd3(0xcf)](_0x279dd3(0xa5))[_0x279dd3(0xdb)][_0x279dd3(0xf1)]=0x1;const _0x45c405=document[_0x279dd3(0xb7)](_0x279dd3(0xc1));_0x45c405&&_0x45c405[_0x279dd3(0xb9)]()[_0x279dd3(0xba)](_0x232c4f=>console['error'](_0x279dd3(0xcc),_0x232c4f)),indefiniteWrite();}function goBack(){const _0x5bda02=_0x5874;document['querySelector']('.title')['style'][_0x5bda02(0xae)]=_0x5bda02(0xaa),document[_0x5bda02(0xcf)](_0x5bda02(0xb6))[_0x5bda02(0xdb)][_0x5bda02(0xae)]=_0x5bda02(0xac),document[_0x5bda02(0xcf)]('.time')[_0x5bda02(0xdb)][_0x5bda02(0xae)]=_0x5bda02(0xac),document[_0x5bda02(0xcf)](_0x5bda02(0xb4))[_0x5bda02(0xdb)][_0x5bda02(0xae)]=_0x5bda02(0xe9),document['querySelector']('.footer')['style'][_0x5bda02(0xae)]='block';}function indefiniteWrite(){const _0x771148=_0x5874,_0x3a0d70=[_0x771148(0xdd),_0x771148(0xbc),_0x771148(0xc3),'Mr.\x20Rashid',_0x771148(0xbe)],_0x203d22=document[_0x771148(0xb7)](_0x771148(0xde));function _0xa6348d(_0x5d1809){const _0xdd5308=_0x771148,_0x293fb5=new Typewriter(_0x203d22,{'loop':![],'delay':0x4b,'deleteSpeed':0x32});_0x293fb5[_0xdd5308(0xed)](_0x3a0d70[_0x5d1809])[_0xdd5308(0xc2)](0xbb8)[_0xdd5308(0xad)]()[_0xdd5308(0xbd)](()=>{_0xa6348d((_0x5d1809+0x1)%_0x3a0d70['length']);})[_0xdd5308(0xea)]();}_0xa6348d(0x0);}function _0x5874(_0x417afa,_0x57a3df){const _0x55d9cf=_0x55d9();return _0x5874=function(_0x587468,_0x179d69){_0x587468=_0x587468-0xa5;let _0x3e2831=_0x55d9cf[_0x587468];return _0x3e2831;},_0x5874(_0x417afa,_0x57a3df);}window[_0x148399(0xc6)]=function(){const _0x5a3269=_0x148399;particlesJS(_0x5a3269(0xc4),{'particles':{'number':{'value':0x50,'density':{'enable':!![],'value_area':0x320}},'color':{'value':_0x5a3269(0xe3)},'shape':{'type':_0x5a3269(0xce),'stroke':{'width':0x0,'color':'#000000'}},'opacity':{'value':0.5},'size':{'value':0x5,'random':!![]},'line_linked':{'enable':!![],'distance':0x96,'color':'#ffffff','opacity':0.4,'width':0x1},'move':{'enable':!![],'speed':0x6,'out_mode':_0x5a3269(0xee)}},'interactivity':{'detect_on':_0x5a3269(0xb8),'events':{'onhover':{'enable':!![],'mode':'repulse'},'onclick':{'enable':!![],'mode':_0x5a3269(0xe4)},'resize':!![]},'modes':{'repulse':{'distance':0xc8},'push':{'particles_nb':0x4}}},'retina_detect':!![]});};
+function updateTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+function startApp() {
+    document.querySelector('.start-overlay').style.display = 'none';
+    const loadingContainer = document.querySelector('.loading-container');
+    loadingContainer.style.display = 'flex';
+    loadingContainer.textContent = '';
+    const lines = [
+        `> Initializing connection...`,
+        `> Establishing secure tunnel...`,
+        `> Bypassing firewall...`,
+        `> Injecting payload...`,
+        `> Decrypting data streams...`,
+        `> Access granted.`,
+        `> Running system diagnostics...`,
+        `> CPU Usage: 23%`,
+        `> Memory Usage: 68%`,
+        `> Network Latency: 42ms`,
+        `> Scanning ports...`,
+        `> Ports open: 22, 80, 443`,
+        `> Initiating data exfiltration...`,
+        `> Encrypting packets...`,
+        `> Uploading to remote server...`,
+        `> Upload complete.`,
+        `> Cleaning logs...`,
+        `> Logs cleaned.`,
+        `> Loading main interface...`
+    ];
+    runLoading(lines, loadingContainer);
+}
+
+function runLoading(lines, container) {
+    let index = 0;
+    function addLine() {
+        if (index < lines.length) {
+            const line = document.createElement('div');
+            line.className = 'loading-line';
+            line.textContent = lines[index];
+            container.appendChild(line);
+            container.scrollTop = container.scrollHeight;
+            index++;
+            setTimeout(addLine, 150 + Math.random() * 250);
+        } else {
+            let dataCount = 0;
+            const maxDataLines = 60;
+            function addDataLine() {
+                if (dataCount < maxDataLines) {
+                    const line = document.createElement('div');
+                    line.className = 'loading-line';
+                    line.textContent = generateRandomDataLine();
+                    container.appendChild(line);
+                    container.scrollTop = container.scrollHeight;
+                    dataCount++;
+                    setTimeout(addDataLine, 30 + Math.random() * 70);
+                } else {
+                    container.style.display = 'none';
+                    showMainUI();
+                }
+            }
+            addDataLine();
+        }
+    }
+    addLine();
+}
+
+function generateRandomDataLine() {
+    const hexChars = '0123456789ABCDEF';
+    const length = 40 + Math.floor(Math.random() * 20);
+    let line = '';
+    for (let i = 0; i < length; i++) {
+        line += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
+    }
+    return line;
+}
+
+function showMainUI() {
+    document.querySelector('.title').style.opacity = 1;
+    document.querySelector('.typing-effect').style.opacity = 1;
+    document.querySelector('.time').style.opacity = 1;
+    document.querySelector('.social-buttons').style.opacity = 1;
+    document.querySelector('.footer').style.opacity = 1;
+    const audio = document.getElementById('background-audio');
+    if (audio) {
+        audio.play().catch(error => console.error('Audio playback failed:', error));
+    }
+    indefiniteWrite();
+}
+
+function goBack() {
+    document.querySelector('.title').style.display = 'inline-flex';
+    document.querySelector('.typing-effect').style.display = 'block';
+    document.querySelector('.time').style.display = 'block';
+    document.querySelector('.social-buttons').style.display = 'flex';
+    document.querySelector('.footer').style.display = 'block';
+}
+
+function indefiniteWrite() {
+    const strs = [
+        '"the fucking moon is split in half" - Sturm',
+        'My name is jeff',
+        'welcome to ceez.cc faggot',
+        'Mr. Rashid',
+        'developed by child predators',
+        'niggachain ai layer 2',
+        'shoutout to jamal/paranoide',
+        'auto-nigga pressing since 09!',
+        'ceez.cc was made straight by the Jordanian Hashemite Empire & the Turks.',
+        '"Challenge yourself; it’s the only path which leads to growth." - Morgan Freeman 1937 - 2025'
+    ];
+    const typElement = document.getElementById('typElement');
+    function typeNext(index) {
+        const typewriter = new Typewriter(typElement, {
+            loop: false,
+            delay: 75,
+            deleteSpeed: 50,
+        });
+        typewriter.typeString(strs[index])
+            .pauseFor(3000)
+            .deleteAll()
+            .callFunction(() => typeNext((index + 1) % strs.length))
+            .start();
+    }
+    typeNext(0);
+}
+
+window.onload = function() {
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#ffffff" },
+            shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+            opacity: { value: 0.5 },
+            size: { value: 5, random: true },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#ffffff",
+                opacity: 0.4,
+                width: 1
+            },
+            move: { enable: true, speed: 6, out_mode: "out" }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: true, mode: "repulse" },
+                onclick: { enable: true, mode: "push" },
+                resize: true
+            },
+            modes: {
+                repulse: { distance: 200 },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+};
