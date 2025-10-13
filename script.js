@@ -107,7 +107,7 @@ function goBack() {
 
 function indefiniteWrite() {
     const strs = [
-        '"the fucking moon is split in half" - Spy',
+        '"the fucking moon is split in half" - Ceez',
         'My name is jeff',
         'welcome to ceez.cc faggot',
         'Mr. Rashid',
