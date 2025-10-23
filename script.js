@@ -109,9 +109,9 @@ function goBack() {
 
 function indefiniteWrite() {
     const strs = [
-        '"the fucking moon is split in half" - Ceez',
-        'welcome to ceez.cc',
-        'halal ai layer 2',
+        'From the river to the sea palestine will be free.',
+        'welcome to ceez.cc brother.',
+        'halal ai layer 2.',
         'ceez.cc was made straight by the Jordanian Hashemite Empire & the Turks.',
         'كُلُّ نَفْسٍۢ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَنَبْلُوكُم بِٱلشَّرِّ وَٱلْخَيْرِ فِتْنَةًۭ ۖ وَإِلَيْنَا تُرْجَعُونَ - 21:35'
     ];
