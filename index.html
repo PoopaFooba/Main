@@ -13,17 +13,17 @@
 <body>
   <div id="particles-js"></div>
 
-  <div class="title" aria-label="Site title">
+  <div class="title" aria-label="Site title" style="opacity:0;">
     <span class="orange">ceez</span><span class="white">.cc</span>
   </div>
 
-  <div id="typElement" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
+  <div id="typElement" class="typing-effect" aria-live="polite" aria-atomic="true" style="opacity:0;"></div>
 
-  <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
+  <div class="time" id="current-time" aria-live="polite" aria-atomic="true" style="opacity:0;">
     == Current Time for Me: 08:34 PM ==
   </div>
 
-  <div class="social-buttons">
+  <div class="social-buttons" style="opacity:0;">
     <a href="https://www.youtube.com/@CeezIDEE" target="_blank" rel="noopener noreferrer">[Youtube]</a>
     <a href="https://cash.app/$BigBallerBrazil" target="_blank" rel="noopener noreferrer">[Cashapp]</a>
     <a href="https://paypal.me/thedoppler" target="_blank" rel="noopener noreferrer">[Paypal]</a>
@@ -34,7 +34,7 @@
     <-- Back
   </button>
 
-  <div class="footer">Made by Ceez</div>
+  <div class="footer" style="opacity:0;">Made by Ceez</div>
 
   <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') startApp()">
     <div class="start-text">PRESS TO BEGIN AGENT...</div>
@@ -50,9 +50,5 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
   <script src="script.js"></script>
-
-  <script>
-    document.addEventListener('selectstart', e => e.preventDefault());
-  </script>
 </body>
 </html>
