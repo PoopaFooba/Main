@@ -108,15 +108,10 @@ function goBack() {
 function indefiniteWrite() {
     const strs = [
         '"the fucking moon is split in half" - Ceez',
-        'My name is jeff',
-        'welcome to ceez.cc faggot',
-        'Mr. Rashid',
-        'developed by child predators',
-        'niggachain ai layer 2',
-        'shoutout to jamal/paranoide',
-        'auto-nigga pressing since 09!',
+        'welcome to ceez.cc',
+        'halal ai layer 2',
         'ceez.cc was made straight by the Jordanian Hashemite Empire & the Turks.',
-        '"Challenge yourself; it’s the only path which leads to growth." - Morgan Freeman 1937 - 2025'
+        'كُلُّ نَفْسٍۢ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَنَبْلُوكُم بِٱلشَّرِّ وَٱلْخَيْرِ فِتْنَةًۭ ۖ وَإِلَيْنَا تُرْجَعُونَ - 21:35"
     ];
     const typElement = document.getElementById('typElement');
     function typeNext(index) {
