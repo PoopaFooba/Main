@@ -9,46 +9,50 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-black text-white font-mono overflow-hidden select-none">
-  <div id="particles-js" class="absolute inset-0 -z-10"></div>
 
-  <div class="title text-center text-5xl font-bold mt-20 opacity-0 transition-opacity duration-700">
-    <span class="text-orange-500">ceez</span><span class="text-white">.cc</span>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="title" aria-label="Site title">
+    <span class="orange">ceez</span><span class="white">.cc</span>
   </div>
 
-  <div id="typElement" class="typing-effect text-center text-lg mt-4 opacity-0 transition-opacity duration-700"></div>
+  <div id="typElement" class="typing-effect" aria-live="polite" aria-atomic="true"></div>
 
-  <div id="current-time" class="time text-center text-sm mt-2 opacity-0 transition-opacity duration-700">
-    == Current Time for Me: --
+  <div class="time" id="current-time" aria-live="polite" aria-atomic="true">
+    == Current Time for Me: 08:34 PM ==
   </div>
 
-  <div class="social-buttons flex justify-center gap-4 mt-6 opacity-0 transition-opacity duration-700">
-    <a href="https://www.youtube.com/@CeezIDEE" target="_blank" rel="noopener noreferrer" class="hover:text-orange-400">[Youtube]</a>
-    <a href="https://cash.app/$BigBallerBrazil" target="_blank" rel="noopener noreferrer" class="hover:text-orange-400">[Cashapp]</a>
-    <a href="https://paypal.me/thedoppler" target="_blank" rel="noopener noreferrer" class="hover:text-orange-400">[Paypal]</a>
-    <a href="https://www.instagram.com/ceezide" target="_blank" rel="noopener noreferrer" class="hover:text-orange-400">[Instagram]</a>
+  <div class="social-buttons">
+    <a href="https://www.youtube.com/@CeezIDEE" target="_blank" rel="noopener noreferrer">[Youtube]</a>
+    <a href="https://cash.app/$BigBallerBrazil" target="_blank" rel="noopener noreferrer">[Cashapp]</a>
+    <a href="https://paypal.me/thedoppler" target="_blank" rel="noopener noreferrer">[Paypal]</a>
+    <a href="https://www.instagram.com/ceezide" target="_blank" rel="noopener noreferrer">[Instagram]</a>
   </div>
 
-  <button onclick="goBack()" type="button" class="back-button absolute top-4 left-4 text-xs text-gray-400 hover:text-white transition">
-    ← Back
+  <button class="back-button" onclick="goBack()" type="button">
+    <-- Back
   </button>
 
-  <div class="footer text-center text-xs text-gray-500 mt-10 opacity-0 transition-opacity duration-700">
-    Made by Ceez
+  <div class="footer">Made by Ceez</div>
+
+  <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') startApp()">
+    <div class="start-text">PRESS TO BEGIN AGENT...</div>
   </div>
 
-  <div class="start-overlay fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 cursor-pointer transition-opacity duration-500">
-    <div class="start-text text-orange-400 text-lg animate-pulse">PRESS TO BEGIN AGENT...</div>
-  </div>
-
-  <div class="loading-container hidden flex-col text-green-400 text-sm font-mono p-4 overflow-y-auto h-screen"></div>
+  <div class="loading-container"></div>
 
   <audio id="background-audio" loop preload="auto">
     <source src="https://files.catbox.moe/9jgim3.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
   </audio>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
   <script src="script.js"></script>
+
+  <script>
+    document.addEventListener('selectstart', e => e.preventDefault());
+  </script>
 </body>
 </html>
