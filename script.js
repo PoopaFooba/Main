@@ -4,52 +4,53 @@ function updateTime() {
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
     const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
+    hours = hours % 12 || 12;
     document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
 }
 setInterval(updateTime, 1000);
 updateTime();
 
 function startApp() {
-    document.querySelector('.start-overlay').style.display = 'none';
+    const overlay = document.querySelector('.start-overlay');
     const loadingContainer = document.querySelector('.loading-container');
-    loadingContainer.style.display = 'flex';
-    loadingContainer.textContent = '';
-    const lines = [
-        `> Initializing connection...`,
-        `> Establishing secure tunnel...`,
-        `> Bypassing firewall...`,
-        `> Injecting payload...`,
-        `> Decrypting data streams...`,
-        `> Access granted.`,
-        `> Running system diagnostics...`,
-        `> CPU Usage: 23%`,
-        `> Memory Usage: 68%`,
-        `> Network Latency: 42ms`,
-        `> Scanning ports...`,
-        `> Ports open: 22, 80, 443`,
-        `> Initiating data exfiltration...`,
-        `> Encrypting packets...`,
-        `> Uploading to remote server...`,
-        `> Upload complete.`,
-        `> Cleaning logs...`,
-        `> Logs cleaned.`,
-        `> Loading main interface...`
-    ];
-    runLoading(lines, loadingContainer);
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        loadingContainer.style.display = 'flex';
+        runLoading([
+            `> Initializing connection...`,
+            `> Establishing secure tunnel...`,
+            `> Bypassing firewall...`,
+            `> Injecting payload...`,
+            `> Decrypting data streams...`,
+            `> Access granted.`,
+            `> Running system diagnostics...`,
+            `> CPU Usage: 23%`,
+            `> Memory Usage: 68%`,
+            `> Network Latency: 42ms`,
+            `> Scanning ports...`,
+            `> Ports open: 22, 80, 443`,
+            `> Initiating data exfiltration...`,
+            `> Encrypting packets...`,
+            `> Uploading to remote server...`,
+            `> Upload complete.`,
+            `> Cleaning logs...`,
+            `> Logs cleaned.`,
+            `> Loading main interface...`
+        ], loadingContainer);
+    }, 400);
 }
 
 function runLoading(lines, container) {
     let index = 0;
+    container.innerHTML = '';
     function addLine() {
         if (index < lines.length) {
             const line = document.createElement('div');
             line.className = 'loading-line';
-            line.textContent = lines[index];
+            line.textContent = lines[index++];
             container.appendChild(line);
             container.scrollTop = container.scrollHeight;
-            index++;
             setTimeout(addLine, 150 + Math.random() * 250);
         } else {
             let dataCount = 0;
@@ -79,30 +80,31 @@ function generateRandomDataLine() {
     const length = 40 + Math.floor(Math.random() * 20);
     let line = '';
     for (let i = 0; i < length; i++) {
-        line += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
+        line += hexChars[Math.floor(Math.random() * hexChars.length)];
     }
     return line;
 }
 
 function showMainUI() {
-    document.querySelector('.title').style.opacity = 1;
-    document.querySelector('.typing-effect').style.opacity = 1;
-    document.querySelector('.time').style.opacity = 1;
-    document.querySelector('.social-buttons').style.opacity = 1;
-    document.querySelector('.footer').style.opacity = 1;
+    const elements = ['.title', '.typing-effect', '.time', '.social-buttons', '.footer'];
+    elements.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) el.style.opacity = 1;
+    });
     const audio = document.getElementById('background-audio');
-    if (audio) {
-        audio.play().catch(error => console.error('Audio playback failed:', error));
-    }
+    if (audio) audio.play().catch(() => {});
     indefiniteWrite();
 }
 
 function goBack() {
-    document.querySelector('.title').style.display = 'inline-flex';
-    document.querySelector('.typing-effect').style.display = 'block';
-    document.querySelector('.time').style.display = 'block';
-    document.querySelector('.social-buttons').style.display = 'flex';
-    document.querySelector('.footer').style.display = 'block';
+    const elements = ['.title', '.typing-effect', '.time', '.social-buttons', '.footer'];
+    elements.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) {
+            el.style.display = el.classList.contains('social-buttons') ? 'flex' : 'block';
+            el.style.opacity = 1;
+        }
+    });
 }
 
 function indefiniteWrite() {
@@ -111,7 +113,7 @@ function indefiniteWrite() {
         'welcome to ceez.cc',
         'halal ai layer 2',
         'ceez.cc was made straight by the Jordanian Hashemite Empire & the Turks.',
-        'كُلُّ نَفْسٍۢ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَنَبْلُوكُم بِٱلشَّرِّ وَٱلْخَيْرِ فِتْنَةًۭ ۖ وَإِلَيْنَا تُرْجَعُونَ - 21:35"
+        'كُلُّ نَفْسٍۢ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَنَبْلُوكُم بِٱلشَّرِّ وَٱلْخَيْرِ فِتْنَةًۭ ۖ وَإِلَيْنَا تُرْجَعُونَ - 21:35'
     ];
     const typElement = document.getElementById('typElement');
     function typeNext(index) {
