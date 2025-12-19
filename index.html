@@ -7,48 +7,47 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-  <div id="particles-js"></div>
+<body class="bg-black text-white overflow-hidden">
 
-  <div class="title" aria-label="Site title" style="opacity:0;">
-    <span class="orange">ceez</span><span class="white">.cc</span>
+  <div id="particles-js" class="fixed inset-0 -z-10"></div>
+
+  <div class="title text-center text-6xl mt-32 opacity-0">
+    <span style="color:#00aaff; text-shadow:0 0 10px #00aaff,0 0 20px #00aaff;">ceez</span>
+    <span>.cc</span>
   </div>
 
-  <div id="typElement" class="typing-effect" aria-live="polite" aria-atomic="true" style="opacity:0;"></div>
+  <div id="typElement" class="typing-effect text-center mt-6 opacity-0"></div>
 
-  <div class="time" id="current-time" aria-live="polite" aria-atomic="true" style="opacity:0;">
+  <div class="time text-center mt-4 opacity-0">
     == Current Time for Me: 08:34 PM ==
   </div>
 
-  <div class="social-buttons" style="opacity:0;">
-    <a href="https://www.youtube.com/@CeezIDEE" target="_blank" rel="noopener noreferrer">[Youtube]</a>
-    <a href="https://cash.app/$BigBallerBrazil" target="_blank" rel="noopener noreferrer">[Cashapp]</a>
-    <a href="https://paypal.me/thedoppler" target="_blank" rel="noopener noreferrer">[Paypal]</a>
-    <a href="https://www.instagram.com/ceezide" target="_blank" rel="noopener noreferrer">[Instagram]</a>
+  <div class="social-buttons text-center mt-6 opacity-0">
+    <a href="https://www.youtube.com/@CeezIDEE" target="_blank">[Youtube]</a>
+    <a href="https://cash.app/$BigBallerBrazil" target="_blank">[Cashapp]</a>
+    <a href="https://paypal.me/thedoppler" target="_blank">[Paypal]</a>
+    <a href="https://www.instagram.com/ceezide" target="_blank">[Instagram]</a>
   </div>
 
-  <button class="back-button" onclick="goBack()" type="button">
-    <-- Back
+  <button class="fixed bottom-5 left-5 border border-cyan-400 text-cyan-400 px-3 py-1">
+    &lt;-- Back
   </button>
 
-  <div class="footer" style="opacity:0;">Made by Ceez</div>
+  <div class="footer text-center mt-10 opacity-0">Made by Ceez</div>
 
-  <div class="start-overlay" onclick="startApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') startApp()">
-    <div class="start-text">PRESS TO BEGIN AGENT...</div>
+  <div class="start-overlay fixed inset-0 flex items-center justify-center bg-black cursor-pointer">
+    <div class="text-cyan-400 text-xl drop-shadow-[0_0_10px_#00aaff]">
+      PRESS TO BEGIN AGENT...
+    </div>
   </div>
 
-  <div class="loading-container"></div>
-
-  <audio id="background-audio" loop preload="auto">
+  <audio id="background-audio" loop>
     <source src="https://files.catbox.moe/9jgim3.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
   </audio>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
