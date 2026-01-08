@@ -109,11 +109,11 @@ function goBack() {
 
 function indefiniteWrite() {
     const strs = [
-        'From the river to the sea palestine will be free.',
-        'welcome to ceez.cc brother.',
-        'halal ai layer 2.',
+        'i hate black ppl so please dont dm me',
+        'welcome to ceez.cc.',
+        'nigga ai layer 2.',
         'ceez.cc was made straight by the Jordanian Hashemite Empire & the Turks.',
-        'كُلُّ نَفْسٍۢ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَنَبْلُوكُم بِٱلشَّرِّ وَٱلْخَيْرِ فِتْنَةًۭ ۖ وَإِلَيْنَا تُرْجَعُونَ - 21:35'
+        'penis'
     ];
     const typElement = document.getElementById('typElement');
     function typeNext(index) {
