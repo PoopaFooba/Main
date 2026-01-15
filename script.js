@@ -5,85 +5,40 @@ function updateTime() {
     const seconds = String(now.getSeconds()).padStart(2, '0');
     const ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12 || 12;
-    document.getElementById('current-time').textContent = `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
+    document.getElementById('current-time').textContent =
+        `== Current Time for Me: ${hours}:${minutes}:${seconds} ${ampm} ==`;
 }
 setInterval(updateTime, 1000);
 updateTime();
 
+/* ---------- d ---------- */
+
 function startApp() {
     const overlay = document.querySelector('.start-overlay');
     const loadingContainer = document.querySelector('.loading-container');
+
     overlay.style.opacity = '0';
     setTimeout(() => {
         overlay.style.display = 'none';
         loadingContainer.style.display = 'flex';
-        runLoading([
-            `> Initializing connection...`,
-            `> Establishing secure tunnel...`,
-            `> Bypassing firewall...`,
-            `> Injecting payload...`,
-            `> Decrypting data streams...`,
-            `> Access granted.`,
-            `> Running system diagnostics...`,
-            `> CPU Usage: 23%`,
-            `> Memory Usage: 68%`,
-            `> Network Latency: 42ms`,
-            `> Scanning ports...`,
-            `> Ports open: 22, 80, 443`,
-            `> Initiating data exfiltration...`,
-            `> Encrypting packets...`,
-            `> Uploading to remote server...`,
-            `> Upload complete.`,
-            `> Cleaning logs...`,
-            `> Logs cleaned.`,
-            `> Loading main interface...`
-        ], loadingContainer);
-    }, 400);
+        runLoading(loadingContainer);
+    }, 300);
 }
 
-function runLoading(lines, container) {
-    let index = 0;
+function runLoading(container) {
     container.innerHTML = '';
-    function addLine() {
-        if (index < lines.length) {
-            const line = document.createElement('div');
-            line.className = 'loading-line';
-            line.textContent = lines[index++];
-            container.appendChild(line);
-            container.scrollTop = container.scrollHeight;
-            setTimeout(addLine, 150 + Math.random() * 250);
-        } else {
-            let dataCount = 0;
-            const maxDataLines = 60;
-            function addDataLine() {
-                if (dataCount < maxDataLines) {
-                    const line = document.createElement('div');
-                    line.className = 'loading-line';
-                    line.textContent = generateRandomDataLine();
-                    container.appendChild(line);
-                    container.scrollTop = container.scrollHeight;
-                    dataCount++;
-                    setTimeout(addDataLine, 30 + Math.random() * 70);
-                } else {
-                    container.style.display = 'none';
-                    showMainUI();
-                }
-            }
-            addDataLine();
-        }
-    }
-    addLine();
+    const line = document.createElement('div');
+    line.className = 'loading-line';
+    line.textContent = 'loading...';
+    container.appendChild(line);
+
+    setTimeout(() => {
+        container.style.display = 'none';
+        showMainUI();
+    }, 2000);
 }
 
-function generateRandomDataLine() {
-    const hexChars = '0123456789ABCDEF';
-    const length = 40 + Math.floor(Math.random() * 20);
-    let line = '';
-    for (let i = 0; i < length; i++) {
-        line += hexChars[Math.floor(Math.random() * hexChars.length)];
-    }
-    return line;
-}
+/* ---------- d ---------- */
 
 function showMainUI() {
     const elements = ['.title', '.typing-effect', '.time', '.social-buttons', '.footer'];
@@ -91,8 +46,10 @@ function showMainUI() {
         const el = document.querySelector(sel);
         if (el) el.style.opacity = 1;
     });
+
     const audio = document.getElementById('background-audio');
     if (audio) audio.play().catch(() => {});
+
     indefiniteWrite();
 }
 
@@ -107,53 +64,57 @@ function goBack() {
     });
 }
 
+/* ---------- d ---------- */
+
 function indefiniteWrite() {
     const strs = [
-        'i hate black ppl so please dont dm me',
         'welcome to ceez.cc.',
-        'nigga ai layer 2.',
-        'ceez.cc was made straight by the Jordanian Hashemite Empire & the Turks.',
-        'penis'
+        'ceez.cc online.',
+        'system ready.'
     ];
+
     const typElement = document.getElementById('typElement');
-    function typeNext(index) {
-        const typewriter = new Typewriter(typElement, {
+
+    function typeNext(i) {
+        const t = new Typewriter(typElement, {
             loop: false,
             delay: 75,
-            deleteSpeed: 50,
+            deleteSpeed: 50
         });
-        typewriter.typeString(strs[index])
-            .pauseFor(3000)
+
+        t.typeString(strs[i])
+            .pauseFor(2500)
             .deleteAll()
-            .callFunction(() => typeNext((index + 1) % strs.length))
+            .callFunction(() => typeNext((i + 1) % strs.length))
             .start();
     }
+
     typeNext(0);
 }
 
-window.onload = function() {
+/* ---------- d ---------- */
+
+window.onload = function () {
     particlesJS('particles-js', {
         particles: {
             number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: "#ffffff" },
-            shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
             opacity: { value: 0.5 },
             size: { value: 5, random: true },
             line_linked: {
                 enable: true,
                 distance: 150,
-                color: "#ffffff",
+                color: '#ffffff',
                 opacity: 0.4,
                 width: 1
             },
-            move: { enable: true, speed: 6, out_mode: "out" }
+            move: { enable: true, speed: 6, out_mode: 'out' }
         },
         interactivity: {
-            detect_on: "canvas",
             events: {
-                onhover: { enable: true, mode: "repulse" },
-                onclick: { enable: true, mode: "push" },
-                resize: true
+                onhover: { enable: true, mode: 'repulse' },
+                onclick: { enable: true, mode: 'push' }
             },
             modes: {
                 repulse: { distance: 200 },
