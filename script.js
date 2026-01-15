@@ -52,9 +52,9 @@ function showMainUI() {
 
 function indefiniteWrite() {
     const a = [
-        'welcome to ceez.cc.',
-        'ceez.cc online.',
-        'system ready.'
+        'welcome to faggot.llc.',
+        'I hate black ppl so please dont dm me if you found my discord.',
+        'nigga layer AI 2.'
     ]
 
     const aa = document.getElementById('typElement')
