@@ -52,9 +52,10 @@ function showMainUI() {
 
 function indefiniteWrite() {
     const a = [
-        'welcome to faggot.llc.',
+        'welcome to ceez.cc you dirty nigger',
         'I hate black ppl so please dont dm me if you found my discord.',
         'nigga layer AI 2.'
+        'Mega Dick 3000'
     ]
 
     const aa = document.getElementById('typElement')
